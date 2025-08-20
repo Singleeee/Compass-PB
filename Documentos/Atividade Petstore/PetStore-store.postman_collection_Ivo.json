@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "da06edd8-1acc-43be-996d-05e07789dc42",
+		"name": "PetStore/store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47458050",
+		"_collection_link": "https://ivo-sobral-5077768.postman.co/workspace/Ivo-Sobral's-Workspace~65be09c1-3c1c-45a6-8c93-6b31207801d8/collection/47458050-da06edd8-1acc-43be-996d-05e07789dc42?action=share&source=collection_link&creator=47458050"
+	},
+	"item": [
+		{
+			"name": "store/inventory",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore3.swagger.io/api/v3/store/inventory",
+					"protocol": "https",
+					"host": [
+						"petstore3",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"api",
+						"v3",
+						"store",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/store/order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://petstore3.swagger.io/api/v3/store/order",
+					"protocol": "https",
+					"host": [
+						"petstore3",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"api",
+						"v3",
+						"store",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/store/order/2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore3.swagger.io/api/v3/store/order/2",
+					"protocol": "https",
+					"host": [
+						"petstore3",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"api",
+						"v3",
+						"store",
+						"order",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/store/delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore3.swagger.io/api/v3/store/order/2",
+					"protocol": "https",
+					"host": [
+						"petstore3",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"api",
+						"v3",
+						"store",
+						"order",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
