@@ -26,3 +26,6 @@ Cenário 6: Deletar reserva
     ${token}=    Autenticar e obter token
     ${booking_id}=    Criar uma nova reserva
     Deletar reserva    ${booking_id}    ${token}
+
+Cenário 7: Listar reservas
+    Listar reservas existentes
