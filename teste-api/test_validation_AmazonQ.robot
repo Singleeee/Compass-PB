@@ -17,12 +17,12 @@ Teste 3: Validar funcionamento do Cenário 3
     ${token}=    Autenticar e obter token
     Should Not Be Empty    ${token}
     ${booking_id}=    Criar uma nova reserva
-    Should Not Be Empty    ${booking_id}
+    Should Not Be Empty    ${booking_id}${EMPTY}
 
 Teste 4: Validar funcionamento do Cenário 4
     [Documentation]    Valida se a consulta de reserva por ID funciona
     ${booking_id}=    Criar uma nova reserva
-    Should Not Be Empty    ${booking_id}
+    Should Not Be Empty    ${booking_id}${EMPTY}
     Consultar reserva por ID    ${booking_id}
 
 Teste 5: Validar funcionamento do Cenário 5
@@ -30,7 +30,7 @@ Teste 5: Validar funcionamento do Cenário 5
     ${token}=    Autenticar e obter token
     Should Not Be Empty    ${token}
     ${booking_id}=    Criar uma nova reserva
-    Should Not Be Empty    ${booking_id}
+    Should Not Be Empty    ${booking_id}${EMPTY}
     Atualizar reserva por ID    ${booking_id}    ${token}
 
 Teste 6: Validar funcionamento do Cenário 6
@@ -38,7 +38,7 @@ Teste 6: Validar funcionamento do Cenário 6
     ${token}=    Autenticar e obter token
     Should Not Be Empty    ${token}
     ${booking_id}=    Criar uma nova reserva
-    Should Not Be Empty    ${booking_id}
+    Should Not Be Empty    ${booking_id}${EMPTY}
     Deletar reserva    ${booking_id}    ${token}
 
 Teste 7: Validar fluxo completo CRUD
