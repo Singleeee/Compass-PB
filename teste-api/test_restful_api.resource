@@ -24,7 +24,7 @@ Autenticar e obter token
     ${response}=    POST On Session    restful    /auth    json=${body}
     Should Be Equal As Integers    ${response.status_code}    200
     Dictionary Should Contain Key    ${response.json()}    token
-    [Return]    ${response.json()['token']}
+    RETURN    ${response.json()['token']}
 
 Listar reservas existentes
     [Documentation]    Busca a lista de reservas e valida se não está vazia.
@@ -51,7 +51,7 @@ Criar uma nova reserva
     ${response}=    POST On Session   restful    /booking    json=${booking_data}
     Should Be Equal As Integers    ${response.status_code}    200
     Dictionary Should Contain Key    ${response.json()}    bookingid
-    [Return]    ${response.json()['bookingid']}
+    RETURN    ${response.json()['bookingid']}
 
 Consultar reserva por ID
     [Documentation]    Busca os detalhes de uma reserva específica usando seu ID.
