@@ -32,3 +32,9 @@ Notice should be
 
     Wait For Elements State        ${element}        visible        5s
     Get Text                       ${element}        equal          ${expected_text}
+
+Alert should be
+    [Arguments]    ${expected_text}
+    
+    Wait For Elements State        css=.alert-error >> text=${expected_text}
+    ...                            visible        5s

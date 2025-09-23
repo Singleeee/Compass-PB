@@ -37,3 +37,18 @@ Não deve permitir o cadastro com email duplicado
     Submit signup form        ${user}
     Notice should be          Oops! Já existe uma conta com o e-mail informado.
 
+Campos obrigatórios
+    [Tags]          required
+    
+    ${user}         Create Dictionary
+    ...             name=${EMPTY}
+    ...             email=${EMPTY}
+    ...             password=${EMPTY}
+    
+    
+    Go to signup page
+    Submit signup form        ${user}
+
+    Alert should be           Informe seu nome completo
+    Alert should be           Informe seu e-email
+    Alert should be           Informe uma senha com pelo menos 6 digitos
