@@ -2,15 +2,13 @@
 Documentation        Cenários de teste para a página de cadastro de usuários
 
 Resource             ../resources/base.robot
-Resource             ../resources/SignppPage.robot
-Library    FakerLibrary
 
 Test Setup        Start Session
 Test Teardown     Take Screenshot
 
 *** Test Cases ***
 Deve poder cadastrar um novo usuário
-    [Tags]    novo
+    [Tags]          novo
 
     ${user}         Create Dictionary
     ...             name=Rodrigo Dendro
@@ -19,21 +17,13 @@ Deve poder cadastrar um novo usuário
 
     Remove user from database      ${user}[email]
 
-    # Go To        ${BASE_URL}/signup
-    Click            css=a[href]
-    
-    # Checkpoint
-    Wait For Elements State        css=h1        visible        5s
-    Get Text                       css=h1        equal          Faça seu cadastro
-
-    Signup login from    ${user}[name]    ${user}[email]    ${user}[password]
-
-    Wait For Elements State        css=.notice p        visible        5s
-    Get Text                       css=.notice p        equal          Boas vindas ao Mark85, o seu gerenciador de tarefas.
+    Go to signup page
+    Submit signup form        ${user}
+    Notice should be          Boas vindas ao Mark85, o seu gerenciador de tarefas.
 
 
 Não deve permitir o cadastro com email duplicado
-    [Tags]    dup
+    [Tags]          dup
     
     ${user}         Create Dictionary
     ...             name=Francisco Correa    
@@ -43,15 +33,7 @@ Não deve permitir o cadastro com email duplicado
     Remove user from database      ${user}[email]
     Insert user from database      ${user}
 
-    # Go To        ${BASE_URL}/signup
-    Click            css=a[href]
-
-    # Checkpoint
-    Wait For Elements State        css=h1        visible        5s
-    Get Text                       css=h1        equal          Faça seu cadastro
-
-    Signup login from    ${user}[name]    ${user}[email]    ${user}[password]
-
-    Wait For Elements State        css=.notice p        visible        5s
-    Get Text                       css=.notice p        equal          Oops! Já existe uma conta com o e-mail informado.
+    Go to signup page
+    Submit signup form        ${user}
+    Notice should be          Oops! Já existe uma conta com o e-mail informado.
 

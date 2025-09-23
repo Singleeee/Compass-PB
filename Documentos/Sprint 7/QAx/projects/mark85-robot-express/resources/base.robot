@@ -4,6 +4,7 @@ Library               libs/database.py
 Library               Browser
 
 Resource              env.robot
+Resource              pages/SignupPage.robot
 
 *** Keywords ***
 Start Session
