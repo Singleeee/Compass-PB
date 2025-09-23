@@ -52,3 +52,15 @@ Campos obrigatórios
     Alert should be           Informe seu nome completo
     Alert should be           Informe seu e-email
     Alert should be           Informe uma senha com pelo menos 6 digitos
+
+Não deve cadastrar com email incorreto
+    [Tags]          inv_email
+
+    ${user}         Create Dictionary
+    ...             name=Ana Maria
+    ...             email=ana@invalido
+    ...             password=adm123
+
+    Go to signup page
+    Submit signup form        ${user}
+    Alert should be           Digite um e-mail válido
