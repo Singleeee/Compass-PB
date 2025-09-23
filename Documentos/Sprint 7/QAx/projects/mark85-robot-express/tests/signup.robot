@@ -1,19 +1,19 @@
 *** Settings ***
 Documentation        Cenários de teste para a página de cadastro de usuários
 
-Library              Browser
-Library              FakerLibrary
+Resource             ../resources/base.robot
+
+*** Variables ***
+
+${name}         Rodrigo Dendro
+${email}        rodrid@exemplo.com
+${password}     adm123
 
 *** Test Cases ***
 Deve poder cadastrar um novo usuário
 
-    ${name}         FakerLibrary.Name
-    ${email}        FakerLibrary.Free Email
-    ${password}     Set Variable    adm123
-
-
-    New Browser     browser=chromium    headless=False
-    New Page        http://localhost:3000/signup
+    Start Session
+    Go To        http://localhost:3000/signup
 
     # Checkpoint
     Wait For Elements State        css=h1        visible        5s

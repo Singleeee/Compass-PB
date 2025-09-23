@@ -1,0 +1,60 @@
+{"level":30,"time":"2025-09-23T00:57:14.947Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Listening on 127.0.0.1:56803"}
+(node:21640) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2025-09-23T00:57:15.502Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2025-09-23T00:57:16.106Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Adding browser to stack: chromium, version: 140.0.7339.16"}
+{"level":30,"time":"2025-09-23T00:57:16.109Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method newBrowser"}
+{"level":30,"time":"2025-09-23T00:57:16.109Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2025-09-23T00:57:16.123Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-09-23T00:57:16.124Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@d70097bda9fbc383a43724bb9438c3f9\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=db4128ad-1a63-48c0-b6b2-62cbc303d781\"}"}
+{"level":30,"time":"2025-09-23T00:57:16.185Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Setting default timeout for context context=6ed889ac-e93e-44cd-a47a-7c525d203423 to 10000"}
+{"level":30,"time":"2025-09-23T00:57:16.186Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Changed active context: context=6ed889ac-e93e-44cd-a47a-7c525d203423"}
+{"level":30,"time":"2025-09-23T00:57:16.715Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Video path: undefined"}
+{"level":30,"time":"2025-09-23T00:57:16.715Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Changed active page"}
+{"level":30,"time":"2025-09-23T00:57:20.392Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method newPage"}
+{"level":30,"time":"2025-09-23T00:57:20.403Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method goTo"}
+{"level":30,"time":"2025-09-23T00:57:20.480Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method goTo"}
+{"level":30,"time":"2025-09-23T00:57:20.490Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-09-23T00:57:20.490Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=h1 in page."}
+{"level":30,"time":"2025-09-23T00:57:20.534Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-09-23T00:57:20.541Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getText"}
+{"level":30,"time":"2025-09-23T00:57:20.542Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=h1 in page."}
+{"level":30,"time":"2025-09-23T00:57:20.572Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Retrieved text for element css=h1 containing Faça seu cadastro"}
+{"level":30,"time":"2025-09-23T00:57:20.572Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getText"}
+{"level":30,"time":"2025-09-23T00:57:20.577Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.577Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=#name in page."}
+{"level":30,"time":"2025-09-23T00:57:20.603Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.615Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.615Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=#email in page."}
+{"level":30,"time":"2025-09-23T00:57:20.636Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.652Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.652Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=#password in page."}
+{"level":30,"time":"2025-09-23T00:57:20.667Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method fillText"}
+{"level":30,"time":"2025-09-23T00:57:20.674Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method click"}
+{"level":30,"time":"2025-09-23T00:57:20.675Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=#buttonSignup in page."}
+{"level":30,"time":"2025-09-23T00:57:20.746Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method click"}
+{"level":30,"time":"2025-09-23T00:57:20.751Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-09-23T00:57:20.751Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=.notice p in page."}
+{"level":30,"time":"2025-09-23T00:57:20.961Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-09-23T00:57:20.965Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getText"}
+{"level":30,"time":"2025-09-23T00:57:20.966Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Strict mode is enabled, find Locator with css=.notice p in page."}
+{"level":30,"time":"2025-09-23T00:57:20.984Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Retrieved text for element css=.notice p containing Boas vindas ao Mark85, o seu gerenciador de tarefas."}
+{"level":30,"time":"2025-09-23T00:57:20.984Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getText"}
+{"level":30,"time":"2025-09-23T00:57:20.993Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:20.997Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:20.999Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.001Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.005Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.007Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.010Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.012Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.015Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Changed active context: context=6ed889ac-e93e-44cd-a47a-7c525d203423"}
+{"level":30,"time":"2025-09-23T00:57:21.015Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Changing current active page: page=1e69a3da-3a6a-4495-8b09-3907434538b9"}
+{"level":30,"time":"2025-09-23T00:57:21.015Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Changed active page"}
+{"level":30,"time":"2025-09-23T00:57:21.019Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-09-23T00:57:21.049Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Removed page=8e1b0d48-4786-474c-9b22-443bd331890d from context=6ed889ac-e93e-44cd-a47a-7c525d203423 page stack"}
+{"level":30,"time":"2025-09-23T00:57:21.095Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-09-23T00:57:21.115Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.115Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-09-23T00:57:21.246Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2025-09-23T00:57:21.590Z","pid":21640,"hostname":"DESKTOP-INOVI70","msg":"End of node method closeAllBrowsers"}
