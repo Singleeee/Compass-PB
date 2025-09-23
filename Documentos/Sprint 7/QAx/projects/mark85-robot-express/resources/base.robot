@@ -3,8 +3,7 @@
 Library               libs/database.py
 Library               Browser
 
-*** Variables ***
-${BASE_URL}        http://localhost:3000
+Resource              env.robot
 
 *** Keywords ***
 Start Session

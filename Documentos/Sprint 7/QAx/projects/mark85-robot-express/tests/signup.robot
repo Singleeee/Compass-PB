@@ -2,6 +2,7 @@
 Documentation        Cenários de teste para a página de cadastro de usuários
 
 Resource             ../resources/base.robot
+Resource             ../resources/SignppPage.robot
 Library    FakerLibrary
 
 Test Setup        Start Session
@@ -18,16 +19,14 @@ Deve poder cadastrar um novo usuário
 
     Remove user from database      ${user}[email]
 
-    Go To        ${BASE_URL}/signup
-
+    # Go To        ${BASE_URL}/signup
+    Click            css=a[href]
+    
     # Checkpoint
     Wait For Elements State        css=h1        visible        5s
     Get Text                       css=h1        equal          Faça seu cadastro
 
-    Fill Text        css=#name        ${user}[name]
-    Fill Text        css=#email       ${user}[email]
-    Fill Text        css=#password    ${user}[password]
-    Click            css=#buttonSignup
+    Signup login from    ${user}[name]    ${user}[email]    ${user}[password]
 
     Wait For Elements State        css=.notice p        visible        5s
     Get Text                       css=.notice p        equal          Boas vindas ao Mark85, o seu gerenciador de tarefas.
@@ -44,16 +43,14 @@ Não deve permitir o cadastro com email duplicado
     Remove user from database      ${user}[email]
     Insert user from database      ${user}
 
-    Go To        ${BASE_URL}/signup
+    # Go To        ${BASE_URL}/signup
+    Click            css=a[href]
 
     # Checkpoint
     Wait For Elements State        css=h1        visible        5s
     Get Text                       css=h1        equal          Faça seu cadastro
 
-    Fill Text        css=#name        ${user}[name]
-    Fill Text        css=#email       ${user}[email]
-    Fill Text        css=#password    ${user}[password]
-    Click            css=#buttonSignup
+    Signup login from    ${user}[name]    ${user}[email]    ${user}[password]
 
     Wait For Elements State        css=.notice p        visible        5s
     Get Text                       css=.notice p        equal          Oops! Já existe uma conta com o e-mail informado.
