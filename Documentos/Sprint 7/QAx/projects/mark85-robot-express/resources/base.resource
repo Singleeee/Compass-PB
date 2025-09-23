@@ -3,7 +3,7 @@
 Library               libs/database.py
 Library               Browser
 
-Resource              env.robot
+Resource              env.resource
 Resource              pages/SignupPage.resource
 
 *** Keywords ***

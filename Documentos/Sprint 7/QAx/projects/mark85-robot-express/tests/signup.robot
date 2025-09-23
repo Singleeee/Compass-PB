@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation        Cenários de teste para a página de cadastro de usuários
 
-Resource             ../resources/base.robot
+Resource             ../resources/base.resource
 
 Test Setup        Start Session
 Test Teardown     Take Screenshot
