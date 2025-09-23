@@ -10,10 +10,12 @@ Resource             ../env.robot
 Go to signup page
     # Go To        ${BASE_URL}/signup
     Click            css=a[href]
+    
+    ${element}       Set Variable                css=h1
 
     # Checkpoint
-    Wait For Elements State        css=h1        visible        5s
-    Get Text                       css=h1        equal          Faça seu cadastro
+    Wait For Elements State        ${element}        visible        5s
+    Get Text                       ${element}        equal          Faça seu cadastro
 
 Submit signup form
     [Arguments]    ${user}
@@ -26,5 +28,7 @@ Submit signup form
 Notice should be
     [Arguments]    ${expected_text}
 
-    Wait For Elements State        css=.notice p        visible        5s
-    Get Text                       css=.notice p        equal          ${expected_text}
+    ${element}     Set Variable    css=.notice p
+
+    Wait For Elements State        ${element}        visible        5s
+    Get Text                       ${element}        equal          ${expected_text}
