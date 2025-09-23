@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-22T21:35:54.122528" rpa="false" schemaversion="5">
+<suite id="s1" name="Signup" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Sprint 7\QAx\projects\mark85-robot-express\signup.robot">
+<test id="s1-t1" name="Deve poder cadastrar um novo usuário" line="8">
+<kw name="Name" owner="FakerLibrary">
+<msg time="2025-09-22T21:35:54.906650" level="INFO">${name} = Melanie Rasmussen</msg>
+<var>${name}</var>
+<doc>:example: 'John Doe'</doc>
+<status status="PASS" start="2025-09-22T21:35:54.905970" elapsed="0.000733"/>
+</kw>
+<kw name="Free Email" owner="FakerLibrary">
+<msg time="2025-09-22T21:35:54.908019" level="INFO">${email} = lisacalderon@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2025-09-22T21:35:54.907179" elapsed="0.000901"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-22T21:35:54.909026" level="INFO">${password} = adm123</msg>
+<var>${password}</var>
+<arg>adm123</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-22T21:35:54.908699" elapsed="0.000365"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2025-09-22T21:35:54.910151" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Guilherme\\Documents\\Compass-PB\\Documentos\\Sprint 7\\QAx\\projects\\mark85-robot-express\\logs\\browser\\traces\\temp\\1b34e0b6-dea2-4b7a-bc97-8dc08f24d0d1"}</msg>
+<msg time="2025-09-22T21:35:54.953005" level="INFO">Starting Browser process C:\Users\Guilherme\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:55006</msg>
+<msg time="2025-09-22T21:35:56.949941" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Guilherme\\Documents\\Compass-PB\\Documentos\\Sprint 7\\QAx\\projects\\mark85-robot-express\\logs\\browser\\traces\\temp\\1b34e0b6-dea2-4b7a-bc97-8dc08f24d0d1"}</msg>
+<arg>browser=chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-09-22T21:35:54.909312" elapsed="2.041035"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-09-22T21:36:01.122798" level="INFO">Successfully initialized new page object and opened url: http://localhost:3000/signup</msg>
+<msg time="2025-09-22T21:36:01.122972" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>http://localhost:3000/signup</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-09-22T21:35:56.975532" elapsed="4.148025"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-09-22T21:36:01.175513" level="INFO">Waited for Element with selector css=h1 at state visible</msg>
+<arg>css=h1</arg>
+<arg>visible</arg>
+<arg>5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.124350" elapsed="0.051446"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-09-22T21:36:01.219512" level="INFO">Text: 'Faça seu cadastro'</msg>
+<arg>css=h1</arg>
+<arg>equal</arg>
+<arg>Faça seu cadastro</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.176437" elapsed="0.043200"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-09-22T21:36:01.221074" level="INFO">Fills the text 'Melanie Rasmussen' in the given field.</msg>
+<arg>css=#name</arg>
+<arg>${name}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.220007" elapsed="0.030620"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-09-22T21:36:01.259173" level="INFO">Fills the text 'lisacalderon@gmail.com' in the given field.</msg>
+<arg>css=#email</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.257824" elapsed="0.036044"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-09-22T21:36:01.299873" level="INFO">Fills the text 'adm123' in the given field.</msg>
+<arg>css=#password</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.298532" elapsed="0.020097"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-09-22T21:36:01.319743" level="INFO">Clicks the element 'css=#buttonSignup'.</msg>
+<arg>css=#buttonSignup</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.319120" elapsed="0.070637"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-09-22T21:36:01.602838" level="INFO">Waited for Element with selector css=.notice p at state visible</msg>
+<arg>css=.notice p</arg>
+<arg>visible</arg>
+<arg>5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-09-22T21:36:01.390218" elapsed="0.212789"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-09-22T21:36:02.629044" level="INFO">Text: 'Boas vindas ao Mark85, o seu gerenciador de tarefas.'</msg>
+<msg time="2025-09-22T21:36:02.903562" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-22T21:36:02.903945" level="INFO">See also file:///C:/Users/Guilherme/Documents/Compass-PB/Documentos/Sprint%207/QAx/projects/mark85-robot-express/logs/playwright-log.txt for additional details.</msg>
+<msg time="2025-09-22T21:36:02.904972" level="FAIL">Text 'Boas vindas ao Mark85, o seu gerenciador de tarefas.' (str) should be 'Boas_ vindas ao Mark85, o seu gerenciador de tarefas.' (str)</msg>
+<arg>css=.notice p</arg>
+<arg>equal</arg>
+<arg>Boas_ vindas ao Mark85, o seu gerenciador de tarefas.</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="FAIL" start="2025-09-22T21:36:01.603400" elapsed="1.416390">Text 'Boas vindas ao Mark85, o seu gerenciador de tarefas.' (str) should be 'Boas_ vindas ao Mark85, o seu gerenciador de tarefas.' (str)</status>
+</kw>
+<msg time="2025-09-22T21:36:03.044975" level="INFO">Switching context to context=91ac8f49-1088-46d4-bac0-bb327494297d in CURRENT</msg>
+<msg time="2025-09-22T21:36:03.056062" level="INFO">Successfully changed active context: context=91ac8f49-1088-46d4-bac0-bb327494297d</msg>
+<msg time="2025-09-22T21:36:03.151458" level="INFO">Successfully closed Context</msg>
+<status status="FAIL" start="2025-09-22T21:35:54.904290" elapsed="8.116231">Text 'Boas vindas ao Mark85, o seu gerenciador de tarefas.' (str) should be 'Boas_ vindas ao Mark85, o seu gerenciador de tarefas.' (str)</status>
+</test>
+<doc>Cenários de teste para a página de cadastro de usuários</doc>
+<status status="FAIL" start="2025-09-22T21:35:54.125899" elapsed="9.031184"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Signup" id="s1" pass="0" fail="1" skip="0">Signup</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
