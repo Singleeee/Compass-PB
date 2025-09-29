@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-18T10:48:30.562569" rpa="false" schemaversion="5">
+<suite id="s1" name="00 Login" source="c:\Users\Guilherme\Documents\serverest-robot\tests\00_Login.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T10:48:31.725656" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T10:48:31.723609" elapsed="0.018571"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.712910" elapsed="0.029929"/>
+</kw>
+<test id="s1-t1" name="Login retorna token Bearer" line="7">
+<kw name="Create Admin And Login" owner="Serverest">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T10:48:31.794469" level="INFO">${suffix} = pnpayo</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.793666" elapsed="0.001129"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T10:48:31.796517" level="INFO">${email} = admin+pnpayo@example.com</msg>
+<var>${email}</var>
+<arg>admin+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.795214" elapsed="0.001705"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T10:48:31.809649" level="INFO">${body} = {'nome': 'Admin pnpayo', 'email': 'admin+pnpayo@example.com', 'password': '1234', 'administrador': 'true'}</msg>
+<var>${body}</var>
+<arg>nome=Admin ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.804401" elapsed="0.005516"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T10:48:33.237987" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '106', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Admin pnpayo", "email": "admin+pnpayo@example.com", "password": "1234", "administrador": "true"}' 
+ </msg>
+<msg time="2025-09-18T10:48:33.238533" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 13:48:32 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "u59HflyBckjOf0uR"
+} 
+ </msg>
+<msg time="2025-09-18T10:48:33.238950" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.810300" elapsed="1.428860"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.239546" elapsed="0.000634"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T10:48:33.241887" level="INFO">${login} = {'email': 'admin+pnpayo@example.com', 'password': '1234'}</msg>
+<var>${login}</var>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.240648" elapsed="0.001597"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T10:48:33.521000" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin+pnpayo@example.com", "password": "1234"}' 
+ </msg>
+<msg time="2025-09-18T10:48:33.521438" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Thu, 18 Sep 2025 13:48:32 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3BucGF5b0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwMzMxMiwiZXhwIjoxNzU4MjAzOTEyfQ.d3nJSvD6LHrlu956AGVHBcwh7L8YC8eLys6OurX-vWI"
+} 
+ </msg>
+<msg time="2025-09-18T10:48:33.522575" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>json=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.243013" elapsed="0.280414"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.526273" elapsed="0.001571"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T10:48:33.531354" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3BucGF5b0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwMzMxMiw...</msg>
+<var>${json}</var>
+<arg>json.loads($resp2.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.528722" elapsed="0.003206"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T10:48:33.533576" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3BucGF5b0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwMzMxMiwiZXhwIjoxNzU4MjAzOTEyfQ.d3nJSvD6LHrlu956AGVHBcwh7L8YC8eLys6Ou...</msg>
+<var>${token}</var>
+<arg>${json}</arg>
+<arg>authorization</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.532750" elapsed="0.001204"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-09-18T10:48:33.534386" elapsed="0.000421"/>
+</return>
+<msg time="2025-09-18T10:48:33.535621" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3BucGF5b0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwMzMxMiwiZXhwIjoxNzU4MjAzOTEyfQ.d3nJSvD6LHrlu956AGVHBcwh7L8YC8eLys6Ou...</msg>
+<var>${token}</var>
+<doc>Cria usuário administrador e realiza login. Retorna token Bearer.</doc>
+<status status="PASS" start="2025-09-18T10:48:31.792821" elapsed="1.743915"/>
+</kw>
+<kw name="Should Start With" owner="BuiltIn">
+<arg>${token}</arg>
+<arg>Bearer</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="PASS" start="2025-09-18T10:48:33.929183" elapsed="0.001081"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" start="2025-09-18T10:48:31.743120" elapsed="2.222442"/>
+</test>
+<status status="PASS" start="2025-09-18T10:48:30.596485" elapsed="3.580935"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="00 Login" id="s1" pass="1" fail="0" skip="0">00 Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

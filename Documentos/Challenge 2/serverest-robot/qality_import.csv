@@ -1,0 +1,7 @@
+Test case name;Precondition;Test Step;Expected result;Labels;Component
+Login retorna token Bearer;Usuário admin criado dinamicamente;POST /login com email e senha válidos;Status 200 e campo 'authorization' iniciando com 'Bearer';api,smoke,login;Auth
+Criar produto como admin;Usuário admin autenticado com token Bearer;POST /produtos com corpo válido;Status 201 e _id retornado;api,produtos,critical;Produtos
+Não permite criar produto sem ser admin;Usuário comum autenticado;POST /produtos com corpo válido;Status 403 e mensagem 'Rota exclusiva para administradores';api,produtos,negativo;Produtos
+Listar produtos retorna quantidade consistente;Dados de produtos existentes;GET /produtos;Status 200 e tamanho de 'produtos' == 'quantidade';api,produtos,listagem;Produtos
+Carrinho - criar e cancelar compra;Usuário admin e produto em estoque;POST /carrinhos e DELETE /carrinhos/cancelar-compra;Status 201 ao criar e 200 ao cancelar;api,carrinhos,happy;Carrinhos
+Segurança - cabeçalhos presentes;Serverest iniciado sem --nosec;GET /produtos e inspecionar headers;Cabeçalhos X-Content-Type-Options e X-Frame-Options presentes;api,security,headers;Segurança

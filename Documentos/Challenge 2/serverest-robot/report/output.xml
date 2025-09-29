@@ -1,0 +1,1515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-18T11:48:01.847997" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Guilherme\Documents\serverest-robot\tests">
+<suite id="s1-s1" name="00 Login" source="C:\Users\Guilherme\Documents\serverest-robot\tests\00_Login.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:04.399664" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T11:48:04.398932" elapsed="0.001340"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.396656" elapsed="0.015583"/>
+</kw>
+<test id="s1-s1-t1" name="Login retorna token Bearer" line="7">
+<kw name="Create Admin And Login" owner="Serverest">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:04.440195" level="INFO">${suffix} = ukphyz</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.439556" elapsed="0.001019"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T11:48:04.444502" level="INFO">${email} = admin+ukphyz@example.com</msg>
+<var>${email}</var>
+<arg>admin+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.440870" elapsed="0.003711"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:04.446383" level="INFO">${body} = {'nome': 'Admin ukphyz', 'email': 'admin+ukphyz@example.com', 'password': '1234', 'administrador': 'true'}</msg>
+<var>${body}</var>
+<arg>nome=Admin ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.444889" elapsed="0.001580"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:04.965184" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '106', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Admin ukphyz", "email": "admin+ukphyz@example.com", "password": "1234", "administrador": "true"}' 
+ </msg>
+<msg time="2025-09-18T11:48:04.965506" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "ybuMgY2MBeNqwNAf"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:04.965794" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.446823" elapsed="0.519030"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.966146" elapsed="0.000541"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:04.968638" level="INFO">${login} = {'email': 'admin+ukphyz@example.com', 'password': '1234'}</msg>
+<var>${login}</var>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.967596" elapsed="0.001133"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:04.993201" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin+ukphyz@example.com", "password": "1234"}' 
+ </msg>
+<msg time="2025-09-18T11:48:04.993615" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3VrcGh5ekBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.9uZlmCwmg1fouCCfkkPGzXEZSezMgEo6tVIaazDGxOk"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:04.993899" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>json=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.969121" elapsed="0.024855"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.994357" elapsed="0.000437"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:04.996050" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3VrcGh5ekBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSw...</msg>
+<var>${json}</var>
+<arg>json.loads($resp2.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.995136" elapsed="0.001262"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:04.998758" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3VrcGh5ekBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.9uZlmCwmg1fouCCfkkPGzXEZSezMgEo6tVIaa...</msg>
+<var>${token}</var>
+<arg>${json}</arg>
+<arg>authorization</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.997570" elapsed="0.001479"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-09-18T11:48:04.999290" elapsed="0.000386"/>
+</return>
+<msg time="2025-09-18T11:48:05.000186" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3VrcGh5ekBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.9uZlmCwmg1fouCCfkkPGzXEZSezMgEo6tVIaa...</msg>
+<var>${token}</var>
+<doc>Cria usuário administrador e realiza login. Retorna token Bearer.</doc>
+<status status="PASS" start="2025-09-18T11:48:04.438608" elapsed="0.565116"/>
+</kw>
+<kw name="Should Start With" owner="BuiltIn">
+<arg>${token}</arg>
+<arg>Bearer</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.007840" elapsed="0.000657"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" start="2025-09-18T11:48:04.412469" elapsed="0.596525"/>
+</test>
+<status status="PASS" start="2025-09-18T11:48:02.639908" elapsed="2.370400"/>
+</suite>
+<suite id="s1-s2" name="10 Usuarios" source="C:\Users\Guilherme\Documents\serverest-robot\tests\10_Usuarios.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.022748" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T11:48:05.022229" elapsed="0.001273"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.021514" elapsed="0.002334"/>
+</kw>
+<test id="s1-s2-t1" name="CRUD Usuários - cadastrar, buscar por id e excluir" line="6">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:05.026822" level="INFO">${suffix} = vaviqq</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.026310" elapsed="0.000578"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.027950" level="INFO">${email} = qa+vaviqq@example.com</msg>
+<var>${email}</var>
+<arg>qa+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.027386" elapsed="0.000696"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.029901" level="INFO">${body} = {'nome': 'QA vaviqq', 'email': 'qa+vaviqq@example.com', 'password': '1234', 'administrador': 'false'}</msg>
+<var>${body}</var>
+<arg>nome=QA ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=1234</arg>
+<arg>administrador=false</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.029172" elapsed="0.000794"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.118232" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '101', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "QA vaviqq", "email": "qa+vaviqq@example.com", "password": "1234", "administrador": "false"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.118436" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "XkH4gu82T6ttYT1i"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.119067" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.030738" elapsed="0.088556"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.119892" elapsed="0.000458"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.121698" level="INFO">${resp_json} = {'message': 'Cadastro realizado com sucesso', '_id': 'XkH4gu82T6ttYT1i'}</msg>
+<var>${resp_json}</var>
+<arg>json.loads($resp.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.120919" elapsed="0.000911"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:05.123592" level="INFO">${id} = XkH4gu82T6ttYT1i</msg>
+<var>${id}</var>
+<arg>${resp_json}</arg>
+<arg>_id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.122754" elapsed="0.000909"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.175750" level="INFO">GET Request : url=http://localhost:3000/usuarios/XkH4gu82T6ttYT1i 
+ path_url=/usuarios/XkH4gu82T6ttYT1i 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-09-18T11:48:05.175933" level="INFO">GET Response : url=http://localhost:3000/usuarios/XkH4gu82T6ttYT1i 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '150', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "nome": "QA vaviqq",
+    "email": "qa+vaviqq@example.com",
+    "password": "1234",
+    "administrador": "false",
+    "_id": "XkH4gu82T6ttYT1i"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.176192" level="INFO">${get} = &lt;Response [200]&gt;</msg>
+<var>${get}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.124549" elapsed="0.051707"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${get}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.176711" elapsed="0.000400"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.225003" level="INFO">DELETE Request : url=http://localhost:3000/usuarios/XkH4gu82T6ttYT1i 
+ path_url=/usuarios/XkH4gu82T6ttYT1i 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-09-18T11:48:05.225170" level="INFO">DELETE Response : url=http://localhost:3000/usuarios/XkH4gu82T6ttYT1i 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Registro excluído com sucesso"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.225418" level="INFO">${del} = &lt;Response [200]&gt;</msg>
+<var>${del}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.177860" elapsed="0.047616"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${del}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.226135" elapsed="0.000440"/>
+</kw>
+<status status="PASS" start="2025-09-18T11:48:05.024010" elapsed="0.203032"/>
+</test>
+<status status="PASS" start="2025-09-18T11:48:05.011479" elapsed="0.217688"/>
+</suite>
+<suite id="s1-s3" name="20 Produtos" source="C:\Users\Guilherme\Documents\serverest-robot\tests\20_Produtos.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.250292" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T11:48:05.249678" elapsed="0.001810"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.249200" elapsed="0.002554"/>
+</kw>
+<test id="s1-s3-t1" name="Criar produto como admin (201)" line="6">
+<kw name="Create Admin And Login" owner="Serverest">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:05.254988" level="INFO">${suffix} = dtjzta</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.254051" elapsed="0.001029"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.255835" level="INFO">${email} = admin+dtjzta@example.com</msg>
+<var>${email}</var>
+<arg>admin+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.255417" elapsed="0.000489"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.257080" level="INFO">${body} = {'nome': 'Admin dtjzta', 'email': 'admin+dtjzta@example.com', 'password': '1234', 'administrador': 'true'}</msg>
+<var>${body}</var>
+<arg>nome=Admin ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.256225" elapsed="0.000938"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.338677" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '106', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Admin dtjzta", "email": "admin+dtjzta@example.com", "password": "1234", "administrador": "true"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.338922" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "28kORIkZzEEU9bqK"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.339770" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.257534" elapsed="0.082547"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.340702" elapsed="0.000516"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.342396" level="INFO">${login} = {'email': 'admin+dtjzta@example.com', 'password': '1234'}</msg>
+<var>${login}</var>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.341550" elapsed="0.000932"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.392924" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin+dtjzta@example.com", "password": "1234"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.393248" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvrvJUcTLVfJJ2_ooIUlZXNOmyfY"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.393697" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>json=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.342761" elapsed="0.051076"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.394201" elapsed="0.000435"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.395896" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSw...</msg>
+<var>${json}</var>
+<arg>json.loads($resp2.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.394955" elapsed="0.001038"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:05.398111" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvrvJUcTLVfJJ2_ooIUlZX...</msg>
+<var>${token}</var>
+<arg>${json}</arg>
+<arg>authorization</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.397435" elapsed="0.000790"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-09-18T11:48:05.398884" elapsed="0.000275"/>
+</return>
+<msg time="2025-09-18T11:48:05.399602" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvrvJUcTLVfJJ2_ooIUlZX...</msg>
+<var>${token}</var>
+<doc>Cria usuário administrador e realiza login. Retorna token Bearer.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.253257" elapsed="0.146532"/>
+</kw>
+<kw name="Create Random Product" owner="Serverest">
+<kw name="Auth Headers" owner="Serverest">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.403635" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvr...</msg>
+<var>${headers}</var>
+<arg>Authorization=${token}</arg>
+<arg>Accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.403012" elapsed="0.000703"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-09-18T11:48:05.403885" elapsed="0.000075"/>
+</return>
+<msg time="2025-09-18T11:48:05.404281" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvr...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:05.402250" elapsed="0.002100"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:05.405641" level="INFO">${rand} = 09705</msg>
+<var>${rand}</var>
+<arg>5</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.404630" elapsed="0.001094"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.406672" level="INFO">${prod} = {'nome': 'Produto 09705', 'preco': '100', 'descricao': 'Mouse', 'quantidade': '10'}</msg>
+<var>${prod}</var>
+<arg>nome=Produto ${rand}</arg>
+<arg>preco=100</arg>
+<arg>descricao=Mouse</arg>
+<arg>quantidade=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.406034" elapsed="0.000704"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.515090" level="INFO">POST Request : url=http://localhost:3000/produtos 
+ path_url=/produtos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK2R0anp0YUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NSwiZXhwIjoxNzU4MjA3NDg1fQ.WS7tBL9IGPTeFgUMvrvJUcTLVfJJ2_ooIUlZXNOmyfY', 'Content-Type': 'application/json', 'Content-Length': '83'} 
+ body=b'{"nome": "Produto 09705", "preco": "100", "descricao": "Mouse", "quantidade": "10"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.515300" level="INFO">POST Response : url=http://localhost:3000/produtos 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "OhsEREoaWnaC0nqL"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.515592" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/produtos</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${prod}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.407023" elapsed="0.108654"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-09-18T11:48:05.515832" elapsed="0.000071"/>
+</return>
+<msg time="2025-09-18T11:48:05.516231" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:05.400353" elapsed="0.115942"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.516749" elapsed="0.001240"/>
+</kw>
+<status status="PASS" start="2025-09-18T11:48:05.251897" elapsed="0.266655"/>
+</test>
+<test id="s1-s3-t2" name="Não permite criar produto sem ser admin (403)" line="11">
+<kw name="Create User (non-admin) And Login" owner="Serverest">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:05.522484" level="INFO">${suffix} = wzhybj</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.521952" elapsed="0.000612"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.524899" level="INFO">${email} = user+wzhybj@example.com</msg>
+<var>${email}</var>
+<arg>user+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.523681" elapsed="0.001395"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.526503" level="INFO">${body} = {'nome': 'User wzhybj', 'email': 'user+wzhybj@example.com', 'password': '1234', 'administrador': 'false'}</msg>
+<var>${body}</var>
+<arg>nome=User ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=1234</arg>
+<arg>administrador=false</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.525479" elapsed="0.001260"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.539169" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '105', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "User wzhybj", "email": "user+wzhybj@example.com", "password": "1234", "administrador": "false"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.539708" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "wajnp5zDwSAMsbsj"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.540306" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.527860" elapsed="0.012555"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.541288" elapsed="0.000611"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.542840" level="INFO">${login} = {'email': 'user+wzhybj@example.com', 'password': '1234'}</msg>
+<var>${login}</var>
+<arg>email=${email}</arg>
+<arg>password=1234</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.542205" elapsed="0.000874"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.597071" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '56', 'Content-Type': 'application/json'} 
+ body=b'{"email": "user+wzhybj@example.com", "password": "1234"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.597252" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '277', 'Date': 'Thu, 18 Sep 2025 14:48:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIegfyWCUMKuvvHiPxR2Q6nHANw"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.597587" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>json=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.543321" elapsed="0.054330"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.598000" elapsed="0.000477"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.599450" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJ...</msg>
+<var>${json}</var>
+<arg>json.loads($resp2.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.598799" elapsed="0.000735"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:05.601591" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIegfyWCUMKuvvHiPxR2Q6n...</msg>
+<var>${token}</var>
+<arg>${json}</arg>
+<arg>authorization</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.599851" elapsed="0.001892"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-09-18T11:48:05.601913" elapsed="0.000096"/>
+</return>
+<msg time="2025-09-18T11:48:05.602548" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIegfyWCUMKuvvHiPxR2Q6n...</msg>
+<var>${token}</var>
+<doc>Cria usuário comum e faz login. Retorna token Bearer.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.521321" elapsed="0.081681"/>
+</kw>
+<kw name="Auth Headers" owner="Serverest">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.608432" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIeg...</msg>
+<var>${headers}</var>
+<arg>Authorization=${token}</arg>
+<arg>Accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.606499" elapsed="0.002035"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-09-18T11:48:05.608694" elapsed="0.000081"/>
+</return>
+<msg time="2025-09-18T11:48:05.609240" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIeg...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:05.604785" elapsed="0.004536"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.610471" level="INFO">${prod} = {'nome': 'Proibido', 'preco': '50', 'descricao': 'Mouse', 'quantidade': '1'}</msg>
+<var>${prod}</var>
+<arg>nome=Proibido</arg>
+<arg>preco=50</arg>
+<arg>descricao=Mouse</arg>
+<arg>quantidade=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.609796" elapsed="0.000784"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.770224" level="INFO">POST Request : url=http://localhost:3000/produtos 
+ path_url=/produtos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIrd3poeWJqQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzU4MjA2ODg1LCJleHAiOjE3NTgyMDc0ODV9.reIJJAA3fxej3Ky2eIegfyWCUMKuvvHiPxR2Q6nHANw', 'Content-Type': 'application/json', 'Content-Length': '76'} 
+ body=b'{"nome": "Proibido", "preco": "50", "descricao": "Mouse", "quantidade": "1"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.770377" level="INFO">POST Response : url=http://localhost:3000/produtos 
+ status=403, reason=Forbidden 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '56', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Rota exclusiva para administradores"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.770608" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/produtos</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${prod}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.611129" elapsed="0.159532"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>403</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.771241" elapsed="0.000631"/>
+</kw>
+<status status="PASS" start="2025-09-18T11:48:05.519945" elapsed="0.252379"/>
+</test>
+<test id="s1-s3-t3" name="Listar produtos retorna quantidade consistente (200)" line="18">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.815401" level="INFO">GET Request : url=http://localhost:3000/produtos 
+ path_url=/produtos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-09-18T11:48:05.815540" level="INFO">GET Response : url=http://localhost:3000/produtos 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '4924', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "quantidade": 26,
+    "produtos": [
+        {
+            "nome": "Produto 35585",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "0O0EwGGiwT7EitUq"
+        },
+        {
+            "nome": "Produto 30766",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "3wUPvguki0yU9rfe"
+        },
+        {
+            "nome": "Produto 98191",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "6727dqn28dm2EnU4"
+        },
+        {
+            "nome": "Produto 46057",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "7TDlW7UuLu1CNTt5"
+        },
+        {
+            "nome": "Produto 69798",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "8p9aL6iPayCNbbri"
+        },
+        {
+            "nome": "Produto 95261",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "ADdoQnG75ZpD06s5"
+        },
+        {
+            "nome": "Produto 79667",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "BJXzunu5K3feopdx"
+        },
+        {
+            "nome": "Logitech MX Vertical",
+            "preco": 470,
+            "descricao": "Mouse",
+            "quantidade": 382,
+            "_id": "BeeJh5lz3k6kSIzA"
+        },
+        {
+            "nome": "Produto 96157",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "Eceg3AeexzoBH7IR"
+        },
+        {
+            "nome": "Produto 30433",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "IZ6Sz5Q5YRjwnKf9"
+        },
+        {
+            "nome": "Produto 70563",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "IhD7CPt3knMGbZeG"
+        },
+        {
+            "nome": "Produto 55016",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "K3gqP9SksgUMZ8LW"
+        },
+        {
+            "nome": "Samsung 60 polegadas",
+            "preco": 5240,
+            "descricao": "TV",
+            "quantidade": 49977,
+            "_id": "K6leHdftCeOJj8BJ"
+        },
+        {
+            "nome": "Produto 88302",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "OBBwlGGVFrEDD19f"
+        },
+        {
+            "nome": "Produto 04350",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "OZ2noGoVAqov7Si3"
+        },
+        {
+            "nome": "Produto 09705",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "OhsEREoaWnaC0nqL"
+        },
+        {
+            "nome": "Produto 53875",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "PwWaI8k8SiCWFT6Q"
+        },
+        {
+            "nome": "Produto 70070",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "dt57l0G47a95kN06"
+        },
+        {
+            "nome": "Produto 91760",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "fdcb5hWF0aHm0HRc"
+        },
+        {
+            "nome": "Produto 93211",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "ih6J5rx10tOqu5ee"
+        },
+        {
+            "nome": "Produto 55905",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "kSZi4KdzoYe22KW0"
+        },
+        {
+            "nome": "Produto 99649",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "lmcxT5WlOwU2IHm4"
+        },
+        {
+            "nome": "Produto 47978",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "mfodsgfJbTJf6tQX"
+        },
+        {
+            "nome": "Produto 83332",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "n6uNGqXe9G7iR1kc"
+        },
+        {
+            "nome": "Produto 71981",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "wRWKZv9zilnB3GEk"
+        },
+        {
+            "nome": "Produto 99925",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "wt9w2kKn6sOEU4Ii"
+        }
+    ]
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.815941" level="INFO">${get} = &lt;Response [200]&gt;</msg>
+<var>${get}</var>
+<arg>serverest</arg>
+<arg>/produtos</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.773774" elapsed="0.042217"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${get}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.816490" elapsed="0.000936"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.819778" level="INFO">${json} = {'quantidade': 26, 'produtos': [{'nome': 'Produto 35585', 'preco': 100, 'descricao': 'Mouse', 'quantidade': '91', '_id': '0O0EwGGiwT7EitUq'}, {'nome': 'Produto 30766', 'preco': 100, 'descricao': 'Mous...</msg>
+<var>${json}</var>
+<arg>json.loads($get.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.818385" elapsed="0.001487"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:05.820883" level="INFO">${qtd} = 26</msg>
+<var>${qtd}</var>
+<arg>${json}</arg>
+<arg>quantidade</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.820383" elapsed="0.000575"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:05.823863" level="INFO">${lista} = [{'nome': 'Produto 35585', 'preco': 100, 'descricao': 'Mouse', 'quantidade': '91', '_id': '0O0EwGGiwT7EitUq'}, {'nome': 'Produto 30766', 'preco': 100, 'descricao': 'Mouse', 'quantidade': '91', '_id': ...</msg>
+<var>${lista}</var>
+<arg>${json}</arg>
+<arg>produtos</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.821810" elapsed="0.002396"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.826149" level="INFO">Length is 26.</msg>
+<arg>${lista}</arg>
+<arg>${qtd}</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.825605" elapsed="0.000732"/>
+</kw>
+<status status="PASS" start="2025-09-18T11:48:05.773039" elapsed="0.053698"/>
+</test>
+<status status="PASS" start="2025-09-18T11:48:05.231096" elapsed="0.596545"/>
+</suite>
+<suite id="s1-s4" name="30 Carrinhos" source="C:\Users\Guilherme\Documents\serverest-robot\tests\30_Carrinhos.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.841145" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T11:48:05.840458" elapsed="0.001036"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.839795" elapsed="0.001875"/>
+</kw>
+<test id="s1-s4-t1" name="Criar carrinho e cancelar compra" line="6">
+<kw name="Create Admin And Login" owner="Serverest">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:05.844630" level="INFO">${suffix} = vaguat</msg>
+<var>${suffix}</var>
+<arg>6</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.843830" elapsed="0.000880"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.845384" level="INFO">${email} = admin+vaguat@example.com</msg>
+<var>${email}</var>
+<arg>admin+${suffix}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.844995" elapsed="0.000450"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.846456" level="INFO">${body} = {'nome': 'Admin vaguat', 'email': 'admin+vaguat@example.com', 'password': '1234', 'administrador': 'true'}</msg>
+<var>${body}</var>
+<arg>nome=Admin ${suffix}</arg>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.845721" elapsed="0.000812"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:05.973792" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '106', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Admin vaguat", "email": "admin+vaguat@example.com", "password": "1234", "administrador": "true"}' 
+ </msg>
+<msg time="2025-09-18T11:48:05.974017" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "2vVgnDi6SCUwAeRN"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:05.974318" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.846809" elapsed="0.127567"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.974631" elapsed="0.000366"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:05.975844" level="INFO">${login} = {'email': 'admin+vaguat@example.com', 'password': '1234'}</msg>
+<var>${login}</var>
+<arg>email=${email}</arg>
+<arg>password=${ADMIN_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.975244" elapsed="0.000662"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.036238" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin+vaguat@example.com", "password": "1234"}' 
+ </msg>
+<msg time="2025-09-18T11:48:06.036390" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7fznl3jU"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:06.036896" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>json=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.976145" elapsed="0.060830"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.037265" elapsed="0.000422"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.038882" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4Niw...</msg>
+<var>${json}</var>
+<arg>json.loads($resp2.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.038039" elapsed="0.000931"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:06.039820" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7f...</msg>
+<var>${token}</var>
+<arg>${json}</arg>
+<arg>authorization</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.039316" elapsed="0.000582"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-09-18T11:48:06.040041" elapsed="0.000076"/>
+</return>
+<msg time="2025-09-18T11:48:06.040957" level="INFO">${token} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7f...</msg>
+<var>${token}</var>
+<doc>Cria usuário administrador e realiza login. Retorna token Bearer.</doc>
+<status status="PASS" start="2025-09-18T11:48:05.843049" elapsed="0.198139"/>
+</kw>
+<kw name="Create Random Product" owner="Serverest">
+<kw name="Auth Headers" owner="Serverest">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.045197" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2tx...</msg>
+<var>${headers}</var>
+<arg>Authorization=${token}</arg>
+<arg>Accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.044642" elapsed="0.000645"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-09-18T11:48:06.045438" elapsed="0.000067"/>
+</return>
+<msg time="2025-09-18T11:48:06.045800" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2tx...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:06.043960" elapsed="0.001902"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-18T11:48:06.046589" level="INFO">${rand} = 57285</msg>
+<var>${rand}</var>
+<arg>5</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.046119" elapsed="0.000535"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.048450" level="INFO">${prod} = {'nome': 'Produto 57285', 'preco': '100', 'descricao': 'Mouse', 'quantidade': '10'}</msg>
+<var>${prod}</var>
+<arg>nome=Produto ${rand}</arg>
+<arg>preco=100</arg>
+<arg>descricao=Mouse</arg>
+<arg>quantidade=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.046964" elapsed="0.001583"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.106294" level="INFO">POST Request : url=http://localhost:3000/produtos 
+ path_url=/produtos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7fznl3jU', 'Content-Type': 'application/json', 'Content-Length': '83'} 
+ body=b'{"nome": "Produto 57285", "preco": "100", "descricao": "Mouse", "quantidade": "10"}' 
+ </msg>
+<msg time="2025-09-18T11:48:06.106458" level="INFO">POST Response : url=http://localhost:3000/produtos 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "SpBe9OpkoeP7W1Hg"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:06.106703" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/produtos</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${prod}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.048840" elapsed="0.057916"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-09-18T11:48:06.106923" elapsed="0.000076"/>
+</return>
+<msg time="2025-09-18T11:48:06.107450" level="INFO">${prodResp} = &lt;Response [201]&gt;</msg>
+<var>${prodResp}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:06.041851" elapsed="0.065669"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${prodResp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.108203" elapsed="0.000809"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.110240" level="INFO">${pjson} = {'message': 'Cadastro realizado com sucesso', '_id': 'SpBe9OpkoeP7W1Hg'}</msg>
+<var>${pjson}</var>
+<arg>json.loads($prodResp.text)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.109666" elapsed="0.000648"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-18T11:48:06.111310" level="INFO">${prodId} = SpBe9OpkoeP7W1Hg</msg>
+<var>${prodId}</var>
+<arg>${pjson}</arg>
+<arg>_id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.110744" elapsed="0.000656"/>
+</kw>
+<kw name="Auth Headers" owner="Serverest">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.112909" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2tx...</msg>
+<var>${headers}</var>
+<arg>Authorization=${token}</arg>
+<arg>Accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.112487" elapsed="0.000483"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-09-18T11:48:06.113185" elapsed="0.000071"/>
+</return>
+<msg time="2025-09-18T11:48:06.113508" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2tx...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-09-18T11:48:06.111910" elapsed="0.001647"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.114878" level="INFO">${carrinho} = {'produtos': []}</msg>
+<var>${carrinho}</var>
+<arg>produtos=@{EMPTY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.113927" elapsed="0.001003"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.115842" level="INFO">${item} = {'idProduto': 'SpBe9OpkoeP7W1Hg', 'quantidade': '1'}</msg>
+<var>${item}</var>
+<arg>idProduto=${prodId}</arg>
+<arg>quantidade=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.115350" elapsed="0.000550"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${carrinho['produtos']}</arg>
+<arg>${item}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.116252" elapsed="0.003026"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.212561" level="INFO">POST Request : url=http://localhost:3000/carrinhos 
+ path_url=/carrinhos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7fznl3jU', 'Content-Type': 'application/json', 'Content-Length': '68'} 
+ body=b'{"produtos": [{"idProduto": "SpBe9OpkoeP7W1Hg", "quantidade": "1"}]}' 
+ </msg>
+<msg time="2025-09-18T11:48:06.212749" level="INFO">POST Response : url=http://localhost:3000/carrinhos 
+ status=201, reason=Created 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "yBq3PPjERKsSvagQ"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:06.212986" level="INFO">${criar} = &lt;Response [201]&gt;</msg>
+<var>${criar}</var>
+<arg>serverest</arg>
+<arg>/carrinhos</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${carrinho}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.120617" elapsed="0.092428"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${criar}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.214482" elapsed="0.000811"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.237332" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/cancelar-compra 
+ path_url=/carrinhos/cancelar-compra 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluK3ZhZ3VhdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTc1ODIwNjg4NiwiZXhwIjoxNzU4MjA3NDg2fQ.4J9nO29-KR0tBUS2txSrtTcfANuwHAgiupW7fznl3jU', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-09-18T11:48:06.237503" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/cancelar-compra 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '86', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Registro excluído com sucesso. Estoque dos produtos reabastecido"
+} 
+ </msg>
+<msg time="2025-09-18T11:48:06.237922" level="INFO">${cancel} = &lt;Response [200]&gt;</msg>
+<var>${cancel}</var>
+<arg>serverest</arg>
+<arg>/carrinhos/cancelar-compra</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.215778" elapsed="0.022213"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${cancel}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.238833" elapsed="0.000675"/>
+</kw>
+<status status="PASS" start="2025-09-18T11:48:05.841794" elapsed="0.398349"/>
+</test>
+<status status="PASS" start="2025-09-18T11:48:05.829017" elapsed="0.412354"/>
+</suite>
+<suite id="s1-s5" name="40 SegurancaHeaders" source="C:\Users\Guilherme\Documents\serverest-robot\tests\40_SegurancaHeaders.robot">
+<kw name="Create API Session" owner="Serverest" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.262468" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>serverest</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-18T11:48:06.261553" elapsed="0.001970"/>
+</kw>
+<doc>Cria sessão HTTP para a API.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.259854" elapsed="0.003888"/>
+</kw>
+<test id="s1-s5-t1" name="Respostas possuem cabeçalhos de segurança" line="10">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-09-18T11:48:06.371049" level="INFO">GET Request : url=http://localhost:3000/produtos 
+ path_url=/produtos 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-09-18T11:48:06.371248" level="INFO">GET Response : url=http://localhost:3000/produtos 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '5112', 'Date': 'Thu, 18 Sep 2025 14:48:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "quantidade": 27,
+    "produtos": [
+        {
+            "nome": "Produto 35585",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "0O0EwGGiwT7EitUq"
+        },
+        {
+            "nome": "Produto 30766",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "3wUPvguki0yU9rfe"
+        },
+        {
+            "nome": "Produto 98191",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "6727dqn28dm2EnU4"
+        },
+        {
+            "nome": "Produto 46057",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "7TDlW7UuLu1CNTt5"
+        },
+        {
+            "nome": "Produto 69798",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "8p9aL6iPayCNbbri"
+        },
+        {
+            "nome": "Produto 95261",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "ADdoQnG75ZpD06s5"
+        },
+        {
+            "nome": "Produto 79667",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "BJXzunu5K3feopdx"
+        },
+        {
+            "nome": "Logitech MX Vertical",
+            "preco": 470,
+            "descricao": "Mouse",
+            "quantidade": 382,
+            "_id": "BeeJh5lz3k6kSIzA"
+        },
+        {
+            "nome": "Produto 96157",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "Eceg3AeexzoBH7IR"
+        },
+        {
+            "nome": "Produto 30433",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "IZ6Sz5Q5YRjwnKf9"
+        },
+        {
+            "nome": "Produto 70563",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "IhD7CPt3knMGbZeG"
+        },
+        {
+            "nome": "Produto 55016",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "K3gqP9SksgUMZ8LW"
+        },
+        {
+            "nome": "Samsung 60 polegadas",
+            "preco": 5240,
+            "descricao": "TV",
+            "quantidade": 49977,
+            "_id": "K6leHdftCeOJj8BJ"
+        },
+        {
+            "nome": "Produto 88302",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "OBBwlGGVFrEDD19f"
+        },
+        {
+            "nome": "Produto 04350",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "OZ2noGoVAqov7Si3"
+        },
+        {
+            "nome": "Produto 09705",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "OhsEREoaWnaC0nqL"
+        },
+        {
+            "nome": "Produto 53875",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "PwWaI8k8SiCWFT6Q"
+        },
+        {
+            "nome": "Produto 57285",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "SpBe9OpkoeP7W1Hg"
+        },
+        {
+            "nome": "Produto 70070",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "dt57l0G47a95kN06"
+        },
+        {
+            "nome": "Produto 91760",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "fdcb5hWF0aHm0HRc"
+        },
+        {
+            "nome": "Produto 93211",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "ih6J5rx10tOqu5ee"
+        },
+        {
+            "nome": "Produto 55905",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "kSZi4KdzoYe22KW0"
+        },
+        {
+            "nome": "Produto 99649",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "lmcxT5WlOwU2IHm4"
+        },
+        {
+            "nome": "Produto 47978",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "mfodsgfJbTJf6tQX"
+        },
+        {
+            "nome": "Produto 83332",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "n6uNGqXe9G7iR1kc"
+        },
+        {
+            "nome": "Produto 71981",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": 10,
+            "_id": "wRWKZv9zilnB3GEk"
+        },
+        {
+            "nome": "Produto 99925",
+            "preco": 100,
+            "descricao": "Mouse",
+            "quantidade": "91",
+            "_id": "wt9w2kKn6sOEU4Ii"
+        }
+    ]
+} 
+ </msg>
+<msg time="2025-09-18T11:48:06.371728" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>serverest</arg>
+<arg>/produtos</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.264839" elapsed="0.106987"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.373871" level="INFO">${headers} = {'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen...</msg>
+<var>${headers}</var>
+<arg>{k.lower(): v for k, v in $resp.headers.items()}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.372374" elapsed="0.001613"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.374971" level="INFO">${ok} = True</msg>
+<var>${ok}</var>
+<arg>'x-content-type-options' in $headers and 'x-frame-options' in $headers</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.374437" elapsed="0.000598"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${ENFORCE_SECURITY_HEADERS} and not ${ok}</arg>
+<arg>Fail</arg>
+<arg>Security headers missing. Got keys: ${headers.keys()}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.375466" elapsed="0.000462"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-18T11:48:06.376613" level="INFO">Segurança presente? True</msg>
+<arg>Segurança presente? ${ok}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-18T11:48:06.376314" elapsed="0.000404"/>
+</kw>
+<tag>security</tag>
+<status status="PASS" start="2025-09-18T11:48:06.263872" elapsed="0.113825"/>
+</test>
+<status status="PASS" start="2025-09-18T11:48:06.242758" elapsed="0.136188"/>
+</suite>
+<status status="PASS" start="2025-09-18T11:48:01.854797" elapsed="4.525818"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">security</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="7" fail="0" skip="0">Tests</stat>
+<stat name="00 Login" id="s1-s1" pass="1" fail="0" skip="0">Tests.00 Login</stat>
+<stat name="10 Usuarios" id="s1-s2" pass="1" fail="0" skip="0">Tests.10 Usuarios</stat>
+<stat name="20 Produtos" id="s1-s3" pass="3" fail="0" skip="0">Tests.20 Produtos</stat>
+<stat name="30 Carrinhos" id="s1-s4" pass="1" fail="0" skip="0">Tests.30 Carrinhos</stat>
+<stat name="40 SegurancaHeaders" id="s1-s5" pass="1" fail="0" skip="0">Tests.40 SegurancaHeaders</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
