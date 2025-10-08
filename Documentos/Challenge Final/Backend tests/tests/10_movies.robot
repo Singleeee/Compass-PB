@@ -20,12 +20,11 @@ Verify Token Works
 
 Create Movie As Admin
     ${adm}=         Login As Admin
-    # sanity silencioso (só falha se der problema)
     Verify Token Works    ${adm}
     ${payload}=     Movie Payload (Docs)
     ${resp}=        Create Movie (admin)    ${adm}    ${payload}
     Should Be True  ${resp.status_code} in [200,201]
-    ${id}=          movies.Extract Id    ${resp}
+    ${id}=          movies.Extract Movie Id    ${resp}
     Should Not Be Empty    ${id}
     RETURN          ${id}
 
@@ -58,7 +57,7 @@ CT03:Deve criar filme com admin (201/200)
     ${payload}=     Movie Payload (Docs)
     ${resp}=        Create Movie (admin)    ${adm}    ${payload}
     Should Be True  ${resp.status_code} in [200,201]
-    ${movie_id}=    movies.Extract Id    ${resp}
+    ${movie_id}=    movies.Extract Movie Id    ${resp}
     Should Not Be Empty    ${movie_id}
     Set Test Variable    ${MOVIE_ID}    ${movie_id}
 

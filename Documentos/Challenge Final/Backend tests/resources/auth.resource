@@ -1,6 +1,5 @@
 *** Settings ***
 Resource    env.resource
-
 Library     Collections
 
 *** Keywords ***
@@ -18,25 +17,49 @@ Login With
     ${resp}=    POST On Session    cinema    /auth/login    json=${body}    expected_status=any
     RETURN      ${resp}
 
-Get Me
-    [Arguments]    ${token}=
-    ${headers}=    Run Keyword If    '${token}'!=''    Header With Token    ${token}
-    ...            ELSE    Create Dictionary    Accept=application/json
-    ${resp}=       GET On Session    cinema    /auth/me    headers=${headers}    expected_status=any
-    RETURN         ${resp}
+# Extrai token aceitando os dois formatos que vimos:
+# 1) {"data":{"token":"..."}}
+# 2) {"token":"..."}
+Extract Token
+    [Arguments]    ${resp}
+    ${body}=    Set Variable    ${resp.json()}
+    ${token}=   Set Variable If    'data' in ${body} and 'token' in ${body['data']}    ${body['data']['token']}    ${EMPTY}
+    ${token}=   Set Variable If    '${token}'==''
+    ...         ${body['token']}    ${token}
+    Should Not Be Empty    ${token}    msg=Resposta não contém token válido.
+    RETURN      ${token}
 
 Get Token
     [Arguments]    ${resp}
-    ${body}=        Set Variable     ${resp.json()}
-    Dictionary Should Contain Key    ${body}    data
-    ${data}=        Set Variable     ${body['data']}
-    Dictionary Should Contain Key    ${data}    token
-    ${token}=       Set Variable     ${data['token']}
-    RETURN         ${token}
+    ${token}=    Extract Token    ${resp}
+    RETURN       ${token}
+
+Get Me
+    [Arguments]    ${token}=${EMPTY}
+    ${headers}=  Run Keyword If    '${token}'!=''    Header With Token    ${token}
+    ...          ELSE    Create Dictionary    Accept=application/json
+    ${resp}=     GET On Session    cinema    /auth/me    headers=${headers}    expected_status=any
+    RETURN       ${resp}
 
 Change Password
     [Arguments]    ${token}    ${current_password}    ${new_password}
-    ${headers}=    Header With Token    ${token}
-    ${body}=       Create Dictionary    currentPassword=${current_password}    newPassword=${new_password}
-    ${resp}=       PUT On Session    cinema    /auth/profile    headers=${headers}    json=${body}    expected_status=any
-    RETURN         ${resp}
+    ${headers}=   Header With Token    ${token}
+    ${body}=      Create Dictionary    currentPassword=${current_password}    newPassword=${new_password}
+    ${resp}=      PUT On Session    cinema    /auth/profile    headers=${headers}    json=${body}    expected_status=any
+    RETURN        ${resp}
+
+Login As Admin
+    Create API Session
+    ${resp}=    POST On Session    cinema    /auth/login
+    ...         json={"email":"${ADMIN_EMAIL}","password":"${ADMIN_PASS}"}    expected_status=any
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${token}=   Extract Token    ${resp}
+    RETURN      ${token}
+
+Login As User
+    Create API Session
+    ${resp}=    POST On Session    cinema    /auth/login
+    ...         json={"email":"${USER_EMAIL}","password":"${USER_PASS}"}    expected_status=any
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${token}=   Extract Token    ${resp}
+    RETURN      ${token}

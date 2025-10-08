@@ -29,8 +29,7 @@ Delete Movie (admin)
     ${resp}=       DELETE On Session    cinema    /movies/${movie_id}    headers=${headers}    expected_status=any
     RETURN         ${resp}
 
-# Utilitário para pegar _id independente do formato do backend
-Extract Id
+Extract Movie Id
     [Arguments]    ${resp}
     ${body}=       Set Variable    ${resp.json()}
     ${id}=         Run Keyword If    '_id' in ${body}                 Set Variable    ${body['_id']}
