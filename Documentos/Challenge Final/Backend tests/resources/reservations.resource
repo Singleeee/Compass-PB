@@ -6,7 +6,25 @@ Library     Collections
 
 *** Keywords ***
 # ============================================================
+# EXTRATORES E HELPERS
+# ============================================================
+Extract Id From First Item
+    [Arguments]    ${items}
+    ${first}=    Get From List    ${items}    0
+    # Evaluate executa a expressão Python de verdade (Set Variable não executa .get)
+    ${sid}=      Evaluate    $first.get('_id') or $first.get('id')
+    Should Not Be Empty    ${sid}
+    RETURN      ${sid}
+
+Extract Object Id From Response
+    [Arguments]    ${resp}
+    ${id}=    Evaluate    $resp.json().get('data', {}).get('_id') or $resp.json().get('_id')
+    Should Not Be Empty    ${id}
+    RETURN      ${id}
+
+# ============================================================
 # GARANTIR UMA SESSION VÁLIDA PARA TESTES
+# - Tenta pegar em /sessions; se não houver, cria movie+theater+session.
 # ============================================================
 Ensure Test Session Id
     [Arguments]    ${maybe_id}=${EMPTY}
@@ -18,15 +36,41 @@ Ensure Test Session Id
     Create API Session
     ${params}=    Create Dictionary    limit=1
     ${resp}=      GET On Session    cinema    /sessions    params=${params}    expected_status=any
-    Should Be Equal As Integers    ${resp.status_code}    200
 
-    ${data}=      Set Variable    ${resp.json()}
-    # Algumas APIs retornam {"data":[...]}, outras retornam diretamente a lista
-    ${items}=     Set Variable If    'data' in ${data}    ${data['data']}    ${data}
-    Should Not Be Empty    ${items}    msg=Endpoint /sessions não retornou itens.
-    ${sid}=       Set Variable    ${items}[0]['_id']
-    Should Not Be Empty    ${sid}     msg=Não foi possível extrair _id da sessão.
-    RETURN        ${sid}
+    # Se listou com sucesso, normaliza a lista de itens
+    ${items}=     Set Variable    []
+    IF    ${resp.status_code} == 200
+        ${data}=    Set Variable    ${resp.json()}
+        ${items}=   Set Variable    ${data.get('data') or data.get('items') or (data if isinstance(data, list) else [])}
+    END
+
+    IF    len(${items}) > 0
+        ${sid}=    Extract Id From First Item    ${items}
+        RETURN    ${sid}
+    END
+
+    # ----------- criar sessão completa (admin) -----------
+    ${adm}=         Login As Admin
+    ${headers}=     Header With Token    ${adm}
+
+    # movie
+    ${m_payload}=   Movie Payload (Docs)
+    ${m_resp}=      POST On Session    cinema    /movies    headers=${headers}    json=${m_payload}    expected_status=any
+    Should Be True  ${m_resp.status_code} in [200,201]
+    ${movie_id}=    Extract Object Id From Response    ${m_resp}
+
+    # theater
+    ${t_payload}=   Random Theater Payload
+    ${t_resp}=      POST On Session    cinema    /theaters    headers=${headers}    json=${t_payload}    expected_status=any
+    Should Be True  ${t_resp.status_code} in [200,201]
+    ${theater_id}=  Extract Object Id From Response    ${t_resp}
+
+    # session
+    ${s_payload}=   Random Session Payload    ${movie_id}    ${theater_id}
+    ${s_resp}=      POST On Session    cinema    /sessions    headers=${headers}    json=${s_payload}    expected_status=any
+    Should Be True  ${s_resp.status_code} in [200,201]
+    ${session_id}=  Extract Object Id From Response    ${s_resp}
+    RETURN          ${session_id}
 
 # ============================================================
 # ENDPOINTS DE RESERVATIONS
@@ -72,9 +116,6 @@ Delete Reservation (admin)
 
 Extract Reservation Id
     [Arguments]    ${resp}
-    ${body}=    Set Variable    ${resp.json()}
-    ${rid}=     Run Keyword If    'data' in ${body} and '_id' in ${body['data']}    Set Variable    ${body['data']['_id']}
-    ...         ELSE IF    '_id' in ${body}    Set Variable    ${body['_id']}
-    ...         ELSE    Set Variable    ${EMPTY}
+    ${rid}=    Evaluate    $resp.json().get('data', {}).get('_id') or $resp.json().get('_id')
     Should Not Be Empty    ${rid}    msg=Resposta não contém _id da reserva.
     RETURN      ${rid}

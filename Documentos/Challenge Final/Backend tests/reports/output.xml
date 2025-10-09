@@ -1,250 +1,2938 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-08T23:29:51.992847" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-08T23:45:39.698239" rpa="false" schemaversion="5">
 <suite id="s1" name="20 Reservations" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Challenge Final\Backend tests\tests\20_reservations.robot">
 <kw name="Setup Reservations Suite" type="SETUP">
 <kw name="Create API Session" owner="env">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T23:29:52.377793" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-10-08T23:45:40.024684" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>cinema</arg>
 <arg>${BASE_URL}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T23:29:52.377196" elapsed="0.000972"/>
+<status status="PASS" start="2025-10-08T23:45:40.023977" elapsed="0.001363"/>
 </kw>
-<status status="PASS" start="2025-10-08T23:29:52.376515" elapsed="0.002060"/>
+<status status="PASS" start="2025-10-08T23:45:40.023276" elapsed="0.002821"/>
 </kw>
 <kw name="Ensure Test Session Id" owner="reservations">
 <if>
 <branch type="IF" condition="'${maybe_id}' != '' and '${maybe_id}' != '${EMPTY}'">
 <return>
 <value>${maybe_id}</value>
-<status status="NOT RUN" start="2025-10-08T23:29:52.380298" elapsed="0.000052"/>
+<status status="NOT RUN" start="2025-10-08T23:45:40.028971" elapsed="0.000022"/>
 </return>
-<status status="NOT RUN" start="2025-10-08T23:29:52.379551" elapsed="0.000903"/>
+<status status="NOT RUN" start="2025-10-08T23:45:40.028397" elapsed="0.000642"/>
 </branch>
-<status status="PASS" start="2025-10-08T23:29:52.379514" elapsed="0.001016"/>
+<status status="PASS" start="2025-10-08T23:45:40.028328" elapsed="0.000738"/>
 </if>
 <kw name="Create API Session" owner="env">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T23:29:52.381998" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-10-08T23:45:40.029677" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>cinema</arg>
 <arg>${BASE_URL}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T23:29:52.381339" elapsed="0.001122"/>
+<status status="PASS" start="2025-10-08T23:45:40.029435" elapsed="0.000424"/>
 </kw>
-<status status="PASS" start="2025-10-08T23:29:52.380873" elapsed="0.001814"/>
+<status status="PASS" start="2025-10-08T23:45:40.029239" elapsed="0.000691"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.383726" level="INFO">${params} = {'limit': '1'}</msg>
+<msg time="2025-10-08T23:45:40.030313" level="INFO">${params} = {'limit': '1'}</msg>
 <var>${params}</var>
 <arg>limit=1</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.382993" elapsed="0.000808"/>
+<status status="PASS" start="2025-10-08T23:45:40.030037" elapsed="0.000304"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T23:29:52.640923" level="INFO">GET Request : url=http://localhost:3000/api/v1/sessions?limit=1 
+<msg time="2025-10-08T23:45:40.272648" level="INFO">GET Request : url=http://localhost:3000/api/v1/sessions?limit=1 
  path_url=/api/v1/sessions?limit=1 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2025-10-08T23:29:52.641117" level="INFO">GET Response : url=http://localhost:3000/api/v1/sessions?limit=1 
+<msg time="2025-10-08T23:45:40.272801" level="INFO">GET Response : url=http://localhost:3000/api/v1/sessions?limit=1 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '5887', 'ETag': 'W/"16ff-7seYrhgu8C4ZdKM6FkxvU1F+BtY"', 'Date': 'Thu, 09 Oct 2025 02:29:52 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '5887', 'ETag': 'W/"16ff-7seYrhgu8C4ZdKM6FkxvU1F+BtY"', 'Date': 'Thu, 09 Oct 2025 02:45:40 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"success":true,"count":1,"pagination":{"next":{"page":2,"limit":1}},"data":[{"_id":"68e6a77ecf5ec47361dbb5ff","movie":{"_id":"68e6a77ecf5ec47361dbb5f6","title":"Inception","duration":148,"poster":"inception.jpg","id":"68e6a77ecf5ec47361dbb5f6"},"theater":{"_id":"68e6a77ecf5ec47361dbb5fb","name":"Theater 1","type":"standard","id":"68e6a77ecf5ec47361dbb5fb"},"datetime":"2025-10-08T15:00:00.000Z","fullPrice":15,"halfPrice":7.5,"seats":[{"row":"A","number":1,"status":"available"},{"row":"A","number":2,"status":"available"},{"row":"A","number":3,"status":"available"},{"row":"A","number":4,"status":"available"},{"row":"A","number":5,"status":"available"},{"row":"A","number":6,"status":"available"},{"row":"A","number":7,"status":"available"},{"row":"A","number":8,"status":"available"},{"row":"A","number":9,"status":"available"},{"row":"A","number":10,"status":"available"},{"row":"A","number":11,"status":"available"},{"row":"A","number":12,"status":"available"},{"row":"A","number":13,"status":"available"},{"row":"A","number":14,"status":"available"},{"row":"A","number":15,"status":"available"},{"row":"B","number":1,"status":"available"},{"row":"B","number":2,"status":"available"},{"row":"B","number":3,"status":"available"},{"row":"B","number":4,"status":"available"},{"row":"B","number":5,"status":"available"},{"row":"B","number":6,"status":"available"},{"row":"B","number":7,"status":"available"},{"row":"B","number":8,"status":"available"},{"row":"B","number":9,"status":"available"},{"row":"B","number":10,"status":"available"},{"row":"B","number":11,"status":"available"},{"row":"B","number":12,"status":"available"},{"row":"B","number":13,"status":"available"},{"row":"B","number":14,"status":"available"},{"row":"B","number":15,"status":"available"},{"row":"C","number":1,"status":"available"},{"row":"C","number":2,"status":"available"},{"row":"C","number":3,"status":"available"},{"row":"C","number":4,"status":"available"},{"row":"C","number":5,"status":"available"},{"row":"C","number":6,"status":"available"},{"row":"C","number":7,"status":"available"},{"row":"C","number":8,"status":"available"},{"row":"C","number":9,"status":"available"},{"row":"C","number":10,"status":"available"},{"row":"C","number":11,"status":"available"},{"row":"C","number":12,"status":"available"},{"row":"C","number":13,"status":"available"},{"row":"C","number":14,"status":"available"},{"row":"C","number":15,"status":"available"},{"row":"D","number":1,"status":"available"},{"row":"D","number":2,"status":"available"},{"row":"D","number":3,"status":"available"},{"row":"D","number":4,"status":"available"},{"row":"D","number":5,"status":"available"},{"row":"D","number":6,"status":"available"},{"row":"D","number":7,"status":"available"},{"row":"D","number":8,"status":"available"},{"row":"D","number":9,"status":"available"},{"row":"D","number":10,"status":"available"},{"row":"D","number":11,"status":"available"},{"row":"D","number":12,"status":"available"},{"row":"D","number":13,"status":"available"},{"row":"D","number":14,"status":"available"},{"row":"D","number":15,"status":"available"},{"row":"E","number":1,"status":"available"},{"row":"E","number":2,"status":"available"},{"row":"E","number":3,"status":"available"},{"row":"E","number":4,"status":"available"},{"row":"E","number":5,"status":"available"},{"row":"E","number":6,"status":"available"},{"row":"E","number":7,"status":"available"},{"row":"E","number":8,"status":"available"},{"row":"E","number":9,"status":"available"},{"row":"E","number":10,"status":"available"},{"row":"E","number":11,"status":"available"},{"row":"E","number":12,"status":"available"},{"row":"E","number":13,"status":"available"},{"row":"E","number":14,"status":"available"},{"row":"E","number":15,"status":"available"},{"row":"F","number":1,"status":"available"},{"row":"F","number":2,"status":"available"},{"row":"F","number":3,"status":"available"},{"row":"F","number":4,"status":"available"},{"row":"F","number":5,"status":"available"},{"row":"F","number":6,"status":"available"},{"row":"F","number":7,"status":"available"},{"row":"F","number":8,"status":"available"},{"row":"F","number":9,"status":"available"},{"row":"F","number":10,"status":"available"},{"row":"F","number":11,"status":"available"},{"row":"F","number":12,"status":"available"},{"row":"F","number":13,"status":"available"},{"row":"F","number":14,"status":"available"},{"row":"F","number":15,"status":"available"},{"row":"G","number":1,"status":"available"},{"row":"G","number":2,"status":"available"},{"row":"G","number":3,"status":"available"},{"row":"G","number":4,"status":"available"},{"row":"G","number":5,"status":"available"},{"row":"G","number":6,"status":"available"},{"row":"G","number":7,"status":"available"},{"row":"G","number":8,"status":"available"},{"row":"G","number":9,"status":"available"},{"row":"G","number":10,"status":"available"},{"row":"G","number":11,"status":"available"},{"row":"G","number":12,"status":"available"},{"row":"G","number":13,"status":"available"},{"row":"G","number":14,"status":"available"},{"row":"G","number":15,"status":"available"},{"row":"H","number":1,"status":"available"},{"row":"H","number":2,"status":"available"},{"row":"H","number":3,"status":"available"},{"row":"H","number":4,"status":"available"},{"row":"H","number":5,"status":"available"},{"row":"H","number":6,"status":"available"},{"row":"H","number":7,"status":"available"},{"row":"H","number":8,"status":"available"},{"row":"H","number":9,"status":"available"},{"row":"H","number":10,"status":"available"},{"row":"H","number":11,"status":"available"},{"row":"H","number":12,"status":"available"},{"row":"H","number":13,"status":"available"},{"row":"H","number":14,"status":"available"},{"row":"H","number":15,"status":"available"}],"createdAt":"2025-10-08T18:03:42.547Z","__v":0,"updatedAt":"2025-10-08T18:03:43.259Z","id":"68e6a77ecf5ec47361dbb5ff"}]} 
  </msg>
-<msg time="2025-10-08T23:29:52.641580" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2025-10-08T23:45:40.273123" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
 <var>${resp}</var>
 <arg>cinema</arg>
 <arg>/sessions</arg>
 <arg>params=${params}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.384408" elapsed="0.257214"/>
+<status status="PASS" start="2025-10-08T23:45:40.030460" elapsed="0.242693"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.273452" level="INFO">${items} = []</msg>
+<var>${items}</var>
+<arg>[]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.273310" elapsed="0.000168"/>
+</kw>
+<if>
+<branch type="IF" condition="${resp.status_code} == 200">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.275172" level="INFO">${data} = {'success': True, 'count': 1, 'pagination': {'next': {'page': 2, 'limit': 1}}, 'data': [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration...</msg>
+<var>${data}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.274059" elapsed="0.001175"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.276264" level="INFO">${items} = [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration': 148, 'poster': 'inception.jpg', 'id': '68e6a77ecf5ec47361dbb5f6'}, 'theater': {'_id'...</msg>
+<var>${items}</var>
+<arg>${data.get('data') or data.get('items') or (data if isinstance(data, list) else [])}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.275475" elapsed="0.000850"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:40.273566" elapsed="0.002829"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:40.273539" elapsed="0.002892"/>
+</if>
+<if>
+<branch type="IF" condition="len(${items}) &gt; 0">
+<kw name="Extract Id From First Item" owner="reservations">
+<kw name="Get From List" owner="Collections">
+<msg time="2025-10-08T23:45:40.279756" level="INFO">${first} = {'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration': 148, 'poster': 'inception.jpg', 'id': '68e6a77ecf5ec47361dbb5f6'}, 'theater': {'_id':...</msg>
+<var>${first}</var>
+<arg>${items}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.279215" elapsed="0.000612"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.281009" level="INFO">${sid} = 68e6a77ecf5ec47361dbb5ff</msg>
+<var>${sid}</var>
+<arg>$first.get('_id') or $first.get('id')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.280036" elapsed="0.001027"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.281466" level="INFO">Length is 24.</msg>
+<arg>${sid}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.281256" elapsed="0.000288"/>
+</kw>
+<return>
+<value>${sid}</value>
+<status status="PASS" start="2025-10-08T23:45:40.281631" elapsed="0.000072"/>
+</return>
+<msg time="2025-10-08T23:45:40.281935" level="INFO">${sid} = 68e6a77ecf5ec47361dbb5ff</msg>
+<var>${sid}</var>
+<arg>${items}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.278812" elapsed="0.003166"/>
+</kw>
+<return>
+<value>${sid}</value>
+<status status="PASS" start="2025-10-08T23:45:40.282054" elapsed="0.000075"/>
+</return>
+<status status="PASS" start="2025-10-08T23:45:40.276508" elapsed="0.005684"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:40.276488" elapsed="0.005755"/>
+</if>
+<kw name="Login As Admin" owner="auth">
+<var>${adm}</var>
+<status status="NOT RUN" start="2025-10-08T23:45:40.282573" elapsed="0.000048"/>
+</kw>
+<kw name="Header With Token" owner="env">
+<var>${headers}</var>
+<arg>${adm}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:40.282857" elapsed="0.000041"/>
+</kw>
+<kw name="Movie Payload (Docs)" owner="payloads">
+<var>${m_payload}</var>
+<status status="NOT RUN" start="2025-10-08T23:45:40.283208" elapsed="0.000038"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<var>${m_resp}</var>
+<arg>cinema</arg>
+<arg>/movies</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${m_payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.283424" elapsed="0.000033"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${m_resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.283685" elapsed="0.000033"/>
+</kw>
+<kw name="Extract Object Id From Response" owner="reservations">
+<var>${movie_id}</var>
+<arg>${m_resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:40.283966" elapsed="0.000038"/>
+</kw>
+<kw name="Random Theater Payload" owner="payloads">
+<var>${t_payload}</var>
+<status status="NOT RUN" start="2025-10-08T23:45:40.284783" elapsed="0.000060"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<var>${t_resp}</var>
+<arg>cinema</arg>
+<arg>/theaters</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${t_payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.285058" elapsed="0.000039"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${t_resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.285323" elapsed="0.000037"/>
+</kw>
+<kw name="Extract Object Id From Response" owner="reservations">
+<var>${theater_id}</var>
+<arg>${t_resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:40.285671" elapsed="0.000049"/>
+</kw>
+<kw name="Random Session Payload" owner="payloads">
+<var>${s_payload}</var>
+<arg>${movie_id}</arg>
+<arg>${theater_id}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:40.286007" elapsed="0.000076"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<var>${s_resp}</var>
+<arg>cinema</arg>
+<arg>/sessions</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${s_payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.286249" elapsed="0.000022"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${s_resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:40.286372" elapsed="0.000019"/>
+</kw>
+<kw name="Extract Object Id From Response" owner="reservations">
+<var>${session_id}</var>
+<arg>${s_resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:40.286532" elapsed="0.000022"/>
+</kw>
+<return>
+<value>${session_id}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:40.286595" elapsed="0.000018"/>
+</return>
+<msg time="2025-10-08T23:45:40.286788" level="INFO">${sid} = 68e6a77ecf5ec47361dbb5ff</msg>
+<var>${sid}</var>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.027165" elapsed="0.259667"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.287224" level="INFO">${TEST_SESSION_ID} = 68e6a77ecf5ec47361dbb5ff</msg>
+<arg>${TEST_SESSION_ID}</arg>
+<arg>${sid}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.286980" elapsed="0.000292"/>
+</kw>
+<kw name="Login As Admin" owner="auth">
+<kw name="Create API Session" owner="env">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:40.287961" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>cinema</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-10-08T23:45:40.287766" elapsed="0.000488"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:40.287621" elapsed="0.000699"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.288671" level="INFO">${body} = {'email': 'admin@example.com', 'password': 'admin123'}</msg>
+<var>${body}</var>
+<arg>email=${ADMIN_EMAIL}</arg>
+<arg>password=${ADMIN_PASS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.288418" elapsed="0.000279"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:40.814112" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/login 
+ path_url=/api/v1/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '54', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin@example.com", "password": "admin123"}' 
+ </msg>
+<msg time="2025-10-08T23:45:40.814193" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '303', 'ETag': 'W/"12f-LxkBzNISEqa4k8xea3MALNS/mBk"', 'Date': 'Thu, 09 Oct 2025 02:45:40 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":true,"data":{"_id":"68e6db3608152f0cc5d7b8af","name":"Admin User","email":"admin@example.com","role":"admin","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00"}} 
+ </msg>
+<msg time="2025-10-08T23:45:40.814310" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/auth/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.288796" elapsed="0.525540"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.642421" level="INFO">Argument types are:
+<msg time="2025-10-08T23:45:40.814906" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${resp.status_code}</arg>
 <arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.641828" elapsed="0.000690"/>
+<status status="PASS" start="2025-10-08T23:45:40.814475" elapsed="0.000492"/>
 </kw>
+<kw name="Extract Token" owner="auth">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.643551" level="INFO">${data} = {'success': True, 'count': 1, 'pagination': {'next': {'page': 2, 'limit': 1}}, 'data': [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration...</msg>
-<var>${data}</var>
+<msg time="2025-10-08T23:45:40.815797" level="INFO">${body} = {'success': True, 'data': {'_id': '68e6db3608152f0cc5d7b8af', 'name': 'Admin User', 'email': 'admin@example.com', 'role': 'admin', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MD...</msg>
+<var>${body}</var>
 <arg>${resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.642672" elapsed="0.000922"/>
+<status status="PASS" start="2025-10-08T23:45:40.815357" elapsed="0.000468"/>
 </kw>
-<kw name="Set Variable If" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.647352" level="INFO">${items} = [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration': 148, 'poster': 'inception.jpg', 'id': '68e6a77ecf5ec47361dbb5f6'}, 'theater': {'_id'...</msg>
-<var>${items}</var>
-<arg>'data' in ${data}</arg>
-<arg>${data['data']}</arg>
-<arg>${data}</arg>
-<doc>Sets variable based on the given condition.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.643753" elapsed="0.003666"/>
+<kw name="_Extract From Body" owner="auth">
+<kw name="Run Keyword And Return If" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.816476" level="INFO">${value} = None</msg>
+<var>${value}</var>
+<arg>'${key}' in ${body}</arg>
+<arg>Set Variable</arg>
+<arg>${body['${key}']}</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.816206" elapsed="0.000301"/>
 </kw>
-<kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.648328" level="INFO">Length is 1.</msg>
-<arg>${items}</arg>
-<arg>msg=Endpoint /sessions não retornou itens.</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-10-08T23:29:52.647594" elapsed="0.000820"/>
-</kw>
-<kw name="Run Keyword Unless" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.648646" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
-<arg>'_id' in ${items}[0]</arg>
-<arg>Fail</arg>
-<arg>msg=O item retornado não contém a chave '_id'.</arg>
-<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
-<status status="PASS" start="2025-10-08T23:29:52.648606" elapsed="0.004534"/>
-</kw>
+<kw name="Run Keyword And Return If" owner="BuiltIn">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T23:29:52.653587" level="FAIL">Dictionary '${items}[0]' has no key ''_id''.</msg>
-<var>${sid}</var>
-<arg>${items}[0]['_id']</arg>
+<arg>${body['data']['${key}']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="FAIL" start="2025-10-08T23:29:52.653352" elapsed="0.000320">Dictionary '${items}[0]' has no key ''_id''.</status>
+<status status="PASS" start="2025-10-08T23:45:40.817267" elapsed="0.000393"/>
 </kw>
-<kw name="Should Not Be Empty" owner="BuiltIn">
-<arg>${sid}</arg>
-<arg>msg=Não foi possível extrair _id da sessão.</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<status status="NOT RUN" start="2025-10-08T23:29:52.653870" elapsed="0.000031"/>
+<msg time="2025-10-08T23:45:40.817715" level="INFO">Returning from the enclosing user keyword.</msg>
+<var>${value}</var>
+<arg>'data' in ${body} and '${key}' in ${body['data']}</arg>
+<arg>Set Variable</arg>
+<arg>${body['data']['${key}']}</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.816643" elapsed="0.001132"/>
 </kw>
 <return>
-<value>${sid}</value>
-<status status="NOT RUN" start="2025-10-08T23:29:52.654017" elapsed="0.000029"/>
+<value>${value}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:40.817831" elapsed="0.000019"/>
 </return>
-<var>${sid}</var>
-<arg>${TEST_SESSION_ID}</arg>
-<status status="FAIL" start="2025-10-08T23:29:52.379144" elapsed="0.275049">Dictionary '${items}[0]' has no key ''_id''.</status>
+<msg time="2025-10-08T23:45:40.817945" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00</msg>
+<var>${token}</var>
+<arg>${body}</arg>
+<arg>token</arg>
+<status status="PASS" start="2025-10-08T23:45:40.815968" elapsed="0.002000"/>
 </kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<arg>${TEST_SESSION_ID}</arg>
-<arg>${sid}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="NOT RUN" start="2025-10-08T23:29:52.654346" elapsed="0.000028"/>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.818172" level="INFO">Length is 171.</msg>
+<arg>${token}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.818063" elapsed="0.000149"/>
 </kw>
-<kw name="Login As Admin" owner="auth">
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-10-08T23:45:40.818251" elapsed="0.000027"/>
+</return>
+<msg time="2025-10-08T23:45:40.818387" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00</msg>
+<var>${token}</var>
+<arg>${resp}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.815133" elapsed="0.003278"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-10-08T23:45:40.818449" elapsed="0.000023"/>
+</return>
+<msg time="2025-10-08T23:45:40.818575" level="INFO">${adm} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00</msg>
 <var>${adm}</var>
-<status status="NOT RUN" start="2025-10-08T23:29:52.654641" elapsed="0.000035"/>
+<status status="PASS" start="2025-10-08T23:45:40.287433" elapsed="0.531177"/>
 </kw>
 <kw name="Login As User" owner="auth">
+<kw name="Create API Session" owner="env">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:40.819233" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>cinema</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-10-08T23:45:40.819051" elapsed="0.000357"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:40.818920" elapsed="0.000549"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.819796" level="INFO">${body} = {'email': 'test@example.com', 'password': 'password123'}</msg>
+<var>${body}</var>
+<arg>email=${USER_EMAIL}</arg>
+<arg>password=${USER_PASS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.819562" elapsed="0.000260"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:40.965392" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/login 
+ path_url=/api/v1/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '56', 'Content-Type': 'application/json'} 
+ body=b'{"email": "test@example.com", "password": "password123"}' 
+ </msg>
+<msg time="2025-10-08T23:45:40.965478" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '300', 'ETag': 'W/"12c-MqBfebi+p4X2btmhgKvF1UA9VLg"', 'Date': 'Thu, 09 Oct 2025 02:45:40 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":true,"data":{"_id":"68e6db3608152f0cc5d7b8a9","name":"Test User","email":"test@example.com","role":"user","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y"}} 
+ </msg>
+<msg time="2025-10-08T23:45:40.965777" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/auth/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.819921" elapsed="0.145886"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.966429" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.965950" elapsed="0.000548"/>
+</kw>
+<kw name="Extract Token" owner="auth">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.967404" level="INFO">${body} = {'success': True, 'data': {'_id': '68e6db3608152f0cc5d7b8a9', 'name': 'Test User', 'email': 'test@example.com', 'role': 'user', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxN...</msg>
+<var>${body}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.966922" elapsed="0.000512"/>
+</kw>
+<kw name="_Extract From Body" owner="auth">
+<kw name="Run Keyword And Return If" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.968061" level="INFO">${value} = None</msg>
+<var>${value}</var>
+<arg>'${key}' in ${body}</arg>
+<arg>Set Variable</arg>
+<arg>${body['${key}']}</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.967831" elapsed="0.000256"/>
+</kw>
+<kw name="Run Keyword And Return If" owner="BuiltIn">
+<kw name="Set Variable" owner="BuiltIn">
+<arg>${body['data']['${key}']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.968774" elapsed="0.000372"/>
+</kw>
+<msg time="2025-10-08T23:45:40.969199" level="INFO">Returning from the enclosing user keyword.</msg>
+<var>${value}</var>
+<arg>'data' in ${body} and '${key}' in ${body['data']}</arg>
+<arg>Set Variable</arg>
+<arg>${body['data']['${key}']}</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.968195" elapsed="0.001061"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:40.969309" elapsed="0.000019"/>
+</return>
+<msg time="2025-10-08T23:45:40.969419" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y</msg>
+<var>${token}</var>
+<arg>${body}</arg>
+<arg>token</arg>
+<status status="PASS" start="2025-10-08T23:45:40.967609" elapsed="0.001834"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.969665" level="INFO">Length is 171.</msg>
+<arg>${token}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.969557" elapsed="0.000148"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-10-08T23:45:40.969746" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:40.969882" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y</msg>
+<var>${token}</var>
+<arg>${resp}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.966681" elapsed="0.003224"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-10-08T23:45:40.969941" elapsed="0.000023"/>
+</return>
+<msg time="2025-10-08T23:45:40.970068" level="INFO">${usr} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y</msg>
 <var>${usr}</var>
-<status status="NOT RUN" start="2025-10-08T23:29:52.654850" elapsed="0.000028"/>
+<status status="PASS" start="2025-10-08T23:45:40.818757" elapsed="0.151335"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.970781" level="INFO">${ADMIN_TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00</msg>
 <arg>${ADMIN_TOKEN}</arg>
 <arg>${adm}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="NOT RUN" start="2025-10-08T23:29:52.654995" elapsed="0.000024"/>
+<status status="PASS" start="2025-10-08T23:45:40.970187" elapsed="0.000638"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.971535" level="INFO">${USER_TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y</msg>
 <arg>${USER_TOKEN}</arg>
 <arg>${usr}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="NOT RUN" start="2025-10-08T23:29:52.655135" elapsed="0.000023"/>
+<status status="PASS" start="2025-10-08T23:45:40.970944" elapsed="0.000636"/>
 </kw>
-<status status="FAIL" start="2025-10-08T23:29:52.375184" elapsed="0.280135">Dictionary '${items}[0]' has no key ''_id''.</status>
+<status status="PASS" start="2025-10-08T23:45:40.022806" elapsed="0.948831"/>
 </kw>
 <test id="s1-t1" name="CT01:Minhas reservas (200)" line="38">
-<status status="FAIL" start="2025-10-08T23:29:52.655463" elapsed="0.000878">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="My Reservations" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:40.974156" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.973882" elapsed="0.000314"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:40.974278" elapsed="0.000065"/>
+</return>
+<msg time="2025-10-08T23:45:40.974578" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.973332" elapsed="0.001294"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.082852" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations/me 
+ path_url=/api/v1/reservations/me 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:41.082928" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations/me 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'ETag': 'W/"24-YA2qaqoHN76SgtFfK4UBGqyVP1w"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":true,"count":0,"data":[]} 
+ </msg>
+<msg time="2025-10-08T23:45:41.083072" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/me</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:40.974863" elapsed="0.108240"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.083172" elapsed="0.000047"/>
+</return>
+<msg time="2025-10-08T23:45:41.083479" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<status status="PASS" start="2025-10-08T23:45:40.972282" elapsed="0.111223"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.085037" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.083895" elapsed="0.001275"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:40.971695" elapsed="0.113857"/>
 </test>
 <test id="s1-t2" name="CT02:Minhas reservas - sem token (401)" line="42">
-<status status="FAIL" start="2025-10-08T23:29:52.657257" elapsed="0.000798">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.090771" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations/me 
+ path_url=/api/v1/reservations/me 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:41.090845" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations/me 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65', 'ETag': 'W/"41-TJq3LYiwj1On+7IZ17oLU5tM1Zs"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Not authorized to access this route"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.091079" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/me</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.087335" elapsed="0.003795"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.093224" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.091576" elapsed="0.001801"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.086503" elapsed="0.007283"/>
 </test>
 <test id="s1-t3" name="CT03:Criar reserva com sucesso (201)" line="46">
-<status status="FAIL" start="2025-10-08T23:29:52.658939" elapsed="0.000674">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.095904" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.095672" elapsed="0.000273"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.096021" elapsed="0.000056"/>
+</return>
+<msg time="2025-10-08T23:45:41.096290" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.095408" elapsed="0.000929"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.098596" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.098318" elapsed="0.000309"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.098684" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:41.098830" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.097518" elapsed="0.001336"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.099523" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.099275" elapsed="0.000274"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.099601" elapsed="0.000027"/>
+</return>
+<msg time="2025-10-08T23:45:41.099738" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.099009" elapsed="0.000752"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.100042" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.099859" elapsed="0.000208"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.100112" elapsed="0.000025"/>
+</return>
+<msg time="2025-10-08T23:45:41.100242" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.097287" elapsed="0.002978"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.097003" elapsed="0.003289"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.096981" elapsed="0.003334"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.100673" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.100404" elapsed="0.000296"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.100750" elapsed="0.000025"/>
+</return>
+<msg time="2025-10-08T23:45:41.100887" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.096597" elapsed="0.004314"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.270088" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:41.270255" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.270430" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.101024" elapsed="0.169435"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.270591" elapsed="0.000067"/>
+</return>
+<msg time="2025-10-08T23:45:41.270861" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.095015" elapsed="0.175872"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.273302" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:41.271387" elapsed="0.002211">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:41.274179" elapsed="0.000069"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:41.094496" elapsed="0.182377">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t4" name="CT04:Criar reserva - assentos já ocupados ou inválidos (400)" line="51">
-<status status="FAIL" start="2025-10-08T23:29:52.660456" elapsed="0.000873">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Make Taken Seats">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.281006" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.280559" elapsed="0.000499"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.281165" elapsed="0.000076"/>
+</return>
+<msg time="2025-10-08T23:45:41.281507" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.280070" elapsed="0.001479"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.282944" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.282333" elapsed="0.000669"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.283151" elapsed="0.000060"/>
+</return>
+<msg time="2025-10-08T23:45:41.283431" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.281803" elapsed="0.001659"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.284068" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.283724" elapsed="0.000401"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.284186" elapsed="0.000034"/>
+</return>
+<msg time="2025-10-08T23:45:41.284344" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.279683" elapsed="0.004685"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.284411" elapsed="0.000024"/>
+</return>
+<msg time="2025-10-08T23:45:41.284543" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.279181" elapsed="0.005387"/>
+</kw>
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.286401" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.286128" elapsed="0.000307"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.286519" elapsed="0.000061"/>
+</return>
+<msg time="2025-10-08T23:45:41.286823" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.285829" elapsed="0.001045"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<var>${seats}</var>
+<status status="NOT RUN" start="2025-10-08T23:45:41.288295" elapsed="0.000029"/>
+</kw>
+<status status="NOT RUN" start="2025-10-08T23:45:41.288011" elapsed="0.000354"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.287982" elapsed="0.000410"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.288842" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.288509" elapsed="0.000373"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.288940" elapsed="0.000036"/>
+</return>
+<msg time="2025-10-08T23:45:41.289101" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.287354" elapsed="0.001775"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.445091" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:41.445243" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.445383" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.289267" elapsed="0.156145"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.445487" elapsed="0.000039"/>
+</return>
+<msg time="2025-10-08T23:45:41.445663" level="INFO">${r1} = &lt;Response [400]&gt;</msg>
+<var>${r1}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<arg>${seats}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.285322" elapsed="0.160368"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.447933" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${r1.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:41.446155" elapsed="0.001878">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Create Reservation (user)" owner="reservations">
+<var>${r2}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<arg>${seats}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:41.448499" elapsed="0.000033"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${r2.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:41.448846" elapsed="0.000025"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:41.278394" elapsed="0.170828">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t5" name="CT05:Criar reserva - não autorizado (401)" line="59">
-<status status="FAIL" start="2025-10-08T23:29:52.662213" elapsed="0.000787">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.452128" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.451835" elapsed="0.000326"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.452248" elapsed="0.000061"/>
+</return>
+<msg time="2025-10-08T23:45:41.452435" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.451539" elapsed="0.000921"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.453167" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.452907" elapsed="0.000286"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.453245" elapsed="0.000030"/>
+</return>
+<msg time="2025-10-08T23:45:41.453385" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.452606" elapsed="0.000802"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.453679" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.453507" elapsed="0.000199"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.453760" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:41.453893" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.451311" elapsed="0.002606"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.451066" elapsed="0.002882"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.451045" elapsed="0.002928"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.454339" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.454068" elapsed="0.000297"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.454415" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:41.454555" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.450772" elapsed="0.003811"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.457342" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '174', 'Content-Type': 'application/json'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:41.457419" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65', 'ETag': 'W/"41-TJq3LYiwj1On+7IZ17oLU5tM1Zs"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Not authorized to access this route"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.457531" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.454871" elapsed="0.002691"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.459925" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.458170" elapsed="0.001939"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.450214" elapsed="0.010526"/>
 </test>
 <test id="s1-t6" name="CT06:Criar reserva - sessão não encontrada (404)" line="64">
-<status status="FAIL" start="2025-10-08T23:29:52.663884" elapsed="0.000793">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.463363" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.463134" elapsed="0.000262"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.463454" elapsed="0.000045"/>
+</return>
+<msg time="2025-10-08T23:45:41.463622" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.462883" elapsed="0.000764"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.465109" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.464855" elapsed="0.000281"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.465190" elapsed="0.000030"/>
+</return>
+<msg time="2025-10-08T23:45:41.465330" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.464584" elapsed="0.000769"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.466354" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.465990" elapsed="0.000413"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.466464" elapsed="0.000034"/>
+</return>
+<msg time="2025-10-08T23:45:41.466617" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.465543" elapsed="0.001097"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.466920" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.466754" elapsed="0.000191"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.466991" elapsed="0.000040"/>
+</return>
+<msg time="2025-10-08T23:45:41.467144" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.464364" elapsed="0.002804"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.464128" elapsed="0.003075"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.464109" elapsed="0.003118"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.467597" level="INFO">${body} = {'session': '000000000000000000000000', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.467330" elapsed="0.000295"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.467675" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:41.467815" level="INFO">${payload} = {'session': '000000000000000000000000', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.463825" elapsed="0.004025"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.571798" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "000000000000000000000000", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:41.571878" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=404, reason=Not Found 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '47', 'ETag': 'W/"2f-gPLtKJslxPBDHKqS0svu5pI/VCc"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Session not found"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.572015" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.467962" elapsed="0.104082"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.572125" elapsed="0.000042"/>
+</return>
+<msg time="2025-10-08T23:45:41.572357" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${NOT_FOUND_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.462330" elapsed="0.110060"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.574742" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.572669" elapsed="0.002215"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.461789" elapsed="0.113854"/>
 </test>
 <test id="s1-t7" name="CT07:Listar todas as reservas (admin) 200" line="68">
-<status status="FAIL" start="2025-10-08T23:29:52.665709" elapsed="0.000726">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="List All Reservations (admin)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.578669" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.578364" elapsed="0.000337"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.578758" elapsed="0.000034"/>
+</return>
+<msg time="2025-10-08T23:45:41.578908" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.578116" elapsed="0.000817"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.579835" level="INFO">${params} = {'page': '1', 'limit': '10'}</msg>
+<var>${params}</var>
+<arg>page=${page}</arg>
+<arg>limit=${limit}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.579033" elapsed="0.000850"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.784030" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations?page=1&amp;limit=10 
+ path_url=/api/v1/reservations?page=1&amp;limit=10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:41.784112" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations?page=1&amp;limit=10 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1665', 'ETag': 'W/"681-yoOnnw3i8Zpme2rklW8Dg73AyMU"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":true,"count":4,"pagination":{},"data":[{"_id":"68dd7cadcef1d1f48530725a","user":null,"session":null,"seats":[{"row":"A","number":3,"type":"full"},{"row":"A","number":4,"type":"full"},{"row":"A","number":5,"type":"full"},{"row":"A","number":6,"type":"full"},{"row":"A","number":7,"type":"full"},{"row":"A","number":8,"type":"full"}],"totalPrice":144,"status":"confirmed","paymentStatus":"completed","paymentMethod":"pix","paymentDate":"2025-10-01T19:10:37.223Z","createdAt":"2025-10-01T19:10:37.224Z","updatedAt":"2025-10-01T19:10:37.224Z","__v":0},{"_id":"68dd7c93cef1d1f48530722a","user":null,"session":null,"seats":[{"row":"A","number":8,"type":"full"},{"row":"B","number":8,"type":"full"}],"totalPrice":38,"status":"confirmed","paymentStatus":"completed","paymentMethod":"bank_transfer","paymentDate":"2025-10-01T19:10:11.224Z","createdAt":"2025-10-01T19:10:11.224Z","updatedAt":"2025-10-01T19:10:11.224Z","__v":0},{"_id":"68dd7c7ecef1d1f4853071fa","user":null,"session":null,"seats":[{"row":"D","number":3,"type":"full"},{"row":"D","number":4,"type":"full"},{"row":"D","number":5,"type":"full"}],"totalPrice":45,"status":"confirmed","paymentStatus":"completed","paymentMethod":"debit_card","paymentDate":"2025-10-01T19:09:50.990Z","createdAt":"2025-10-01T19:09:50.991Z","updatedAt":"2025-10-01T19:09:50.991Z","__v":0},{"_id":"68dd7c6dcef1d1f4853071ec","user":null,"session":null,"seats":[{"row":"E","number":6,"type":"full"}],"totalPrice":15,"status":"confirmed","paymentStatus":"completed","paymentMethod":"credit_card","paymentDate":"2025-10-01T19:09:33.976Z","createdAt":"2025-10-01T19:09:33.981Z","updatedAt":"2025-10-01T19:09:33.981Z","__v":0}]} 
+ </msg>
+<msg time="2025-10-08T23:45:41.784238" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>params=${params}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.580047" elapsed="0.204218"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.784333" elapsed="0.000053"/>
+</return>
+<msg time="2025-10-08T23:45:41.784515" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>1</arg>
+<arg>10</arg>
+<status status="PASS" start="2025-10-08T23:45:41.577742" elapsed="0.206797"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.785411" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.784870" elapsed="0.000602"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.577139" elapsed="0.208594"/>
 </test>
 <test id="s1-t8" name="CT08:Listar todas - sem token (401)" line="72">
-<status status="FAIL" start="2025-10-08T23:29:52.667416" elapsed="0.001123">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.788749" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:41.788845" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65', 'ETag': 'W/"41-TJq3LYiwj1On+7IZ17oLU5tM1Zs"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Not authorized to access this route"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.788962" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.786848" elapsed="0.002142"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.789820" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.789361" elapsed="0.000519"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.786436" elapsed="0.003714"/>
 </test>
 <test id="s1-t9" name="CT09:Listar todas - usuário comum (403)" line="76">
-<status status="FAIL" start="2025-10-08T23:29:52.669481" elapsed="0.001684">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="List All Reservations (admin)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.794740" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.793965" elapsed="0.000832"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.794867" elapsed="0.000040"/>
+</return>
+<msg time="2025-10-08T23:45:41.795123" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.792846" elapsed="0.002304"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.795532" level="INFO">${params} = {'page': '1', 'limit': '10'}</msg>
+<var>${params}</var>
+<arg>page=${page}</arg>
+<arg>limit=${limit}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.795279" elapsed="0.000279"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.844296" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations?page=1&amp;limit=10 
+ path_url=/api/v1/reservations?page=1&amp;limit=10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:41.844376" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations?page=1&amp;limit=10 
+ status=403, reason=Forbidden 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'ETag': 'W/"53-HQ7D0c09eB4A2u3nNjjh5szO0JM"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"User role user is not authorized to access this route"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.844494" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>params=${params}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.795735" elapsed="0.048785"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.844596" elapsed="0.000042"/>
+</return>
+<msg time="2025-10-08T23:45:41.844792" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>1</arg>
+<arg>10</arg>
+<status status="PASS" start="2025-10-08T23:45:41.791778" elapsed="0.053040"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.846022" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>403</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.845160" elapsed="0.001018"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.790665" elapsed="0.056319"/>
 </test>
 <test id="s1-t10" name="CT10:Detalhes da reserva (200)" line="80">
-<status status="FAIL" start="2025-10-08T23:29:52.672260" elapsed="0.000534">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.849328" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.849082" elapsed="0.000277"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.849417" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:41.849567" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.848845" elapsed="0.000748"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.851060" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.850782" elapsed="0.000306"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.851142" elapsed="0.000029"/>
+</return>
+<msg time="2025-10-08T23:45:41.851283" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.850526" elapsed="0.000781"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.851961" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.851718" elapsed="0.000269"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.852050" elapsed="0.000028"/>
+</return>
+<msg time="2025-10-08T23:45:41.852198" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.851441" elapsed="0.000781"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.852485" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.852322" elapsed="0.000188"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.852580" elapsed="0.000031"/>
+</return>
+<msg time="2025-10-08T23:45:41.852725" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.850309" elapsed="0.002441"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.850088" elapsed="0.002693"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.850068" elapsed="0.002738"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.853184" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.852904" elapsed="0.000307"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.853260" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:41.853398" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.849768" elapsed="0.003724"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:41.961080" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:41.961160" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:41.961288" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.853607" elapsed="0.107711"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:41.961447" elapsed="0.000041"/>
+</return>
+<msg time="2025-10-08T23:45:41.961632" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.848516" elapsed="0.113140"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.962307" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:41.961783" elapsed="0.000611">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:41.962603" elapsed="0.000046"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:41.962735" elapsed="0.000022"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:41.848142" elapsed="0.114720">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Get Reservation" owner="reservations">
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${rid}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:41.963241" elapsed="0.000039"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:41.963636" elapsed="0.000070"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:41.847658" elapsed="0.116736">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t11" name="CT11:Detalhes - não autorizado (401)" line="85">
-<status status="FAIL" start="2025-10-08T23:29:52.673663" elapsed="0.000738">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.967759" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.967499" elapsed="0.000292"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:41.967851" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:41.968014" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.967252" elapsed="0.000788"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.969524" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.969259" elapsed="0.000293"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.969602" elapsed="0.000030"/>
+</return>
+<msg time="2025-10-08T23:45:41.969741" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:41.968983" elapsed="0.000782"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.970434" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.970166" elapsed="0.000295"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:41.970512" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:41.970645" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:41.969896" elapsed="0.000771"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.970922" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.970767" elapsed="0.000179"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:41.970996" elapsed="0.000027"/>
+</return>
+<msg time="2025-10-08T23:45:41.971127" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:41.968768" elapsed="0.002382"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:41.968538" elapsed="0.002640"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:41.968514" elapsed="0.002689"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:41.971691" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.971314" elapsed="0.000405"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:41.971775" elapsed="0.000041"/>
+</return>
+<msg time="2025-10-08T23:45:41.972029" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.968211" elapsed="0.003862"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.074880" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.075013" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.075222" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:41.972262" elapsed="0.103016"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.075416" elapsed="0.000068"/>
+</return>
+<msg time="2025-10-08T23:45:42.075766" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:41.966914" elapsed="0.108931"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.076870" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.076100" elapsed="0.000850">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.077175" elapsed="0.000052"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.077274" elapsed="0.000018"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:41.966458" elapsed="0.110936">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${rid}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.077746" elapsed="0.000029"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.078095" elapsed="0.000264"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:41.965825" elapsed="0.113272">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t12" name="CT12:Detalhes - não encontrado (404)" line="90">
-<status status="FAIL" start="2025-10-08T23:29:52.675224" elapsed="0.000782">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Get Reservation" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.082646" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.082239" elapsed="0.000459"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.082792" elapsed="0.000040"/>
+</return>
+<msg time="2025-10-08T23:45:42.082992" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.081979" elapsed="0.001040"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.193877" level="INFO">GET Request : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ path_url=/api/v1/reservations/000000000000000000000000 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:42.193980" level="INFO">GET Response : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ status=404, reason=Not Found 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'ETag': 'W/"33-8vWO0lSSzyNkCoU9rwUX947GF3A"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Reservation not found"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.194147" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${reservation_id}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.083137" elapsed="0.111038"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.194243" elapsed="0.000038"/>
+</return>
+<msg time="2025-10-08T23:45:42.194433" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${NOT_FOUND_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.081588" elapsed="0.112871"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.195791" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.194874" elapsed="0.001529"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.079835" elapsed="0.117024"/>
 </test>
 <test id="s1-t13" name="CT13:Atualizar status (admin) 200" line="94">
-<status status="FAIL" start="2025-10-08T23:29:52.676851" elapsed="0.000713">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.199285" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.199058" elapsed="0.000258"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.199371" elapsed="0.000043"/>
+</return>
+<msg time="2025-10-08T23:45:42.199531" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.198805" elapsed="0.000752"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.200997" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.200746" elapsed="0.000278"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.201075" elapsed="0.000027"/>
+</return>
+<msg time="2025-10-08T23:45:42.201209" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.200493" elapsed="0.000739"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.201904" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.201656" elapsed="0.000275"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.201982" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:42.202125" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.201378" elapsed="0.000775"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.202440" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.202255" elapsed="0.000231"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.202534" elapsed="0.000028"/>
+</return>
+<msg time="2025-10-08T23:45:42.202698" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.200263" elapsed="0.002472"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.200038" elapsed="0.002751"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.200018" elapsed="0.002848"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.203322" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.203021" elapsed="0.000330"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.203405" elapsed="0.000030"/>
+</return>
+<msg time="2025-10-08T23:45:42.203624" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.199733" elapsed="0.003918"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.321298" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.321443" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.321656" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.203778" elapsed="0.117930"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.321876" elapsed="0.000086"/>
+</return>
+<msg time="2025-10-08T23:45:42.322250" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.198458" elapsed="0.123849"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.323341" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.322528" elapsed="0.000928">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.323759" elapsed="0.000237"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.324102" elapsed="0.000035"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.198112" elapsed="0.126350">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Update Reservation Status (admin)" owner="reservations">
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${rid}</arg>
+<arg>confirmed</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.325057" elapsed="0.000052"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.325818" elapsed="0.000077"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.197629" elapsed="0.129450">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t14" name="CT14:Atualizar status - não autorizado (401)" line="99">
-<status status="FAIL" start="2025-10-08T23:29:52.678338" elapsed="0.000636">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.329939" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.329676" elapsed="0.000297"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.330031" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:42.330184" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.329277" elapsed="0.000932"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.331730" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.331444" elapsed="0.000314"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.331813" elapsed="0.000031"/>
+</return>
+<msg time="2025-10-08T23:45:42.331972" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.331139" elapsed="0.000868"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.332683" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.332429" elapsed="0.000296"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.332776" elapsed="0.000029"/>
+</return>
+<msg time="2025-10-08T23:45:42.332954" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.332150" elapsed="0.000829"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.333246" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.333084" elapsed="0.000187"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.333316" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:42.333448" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.330925" elapsed="0.002546"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.330704" elapsed="0.002796"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.330685" elapsed="0.002841"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.333901" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.333618" elapsed="0.000311"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.333977" elapsed="0.000025"/>
+</return>
+<msg time="2025-10-08T23:45:42.334113" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.330402" elapsed="0.003735"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.435027" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.435105" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.435242" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.334236" elapsed="0.101046"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.435474" elapsed="0.000041"/>
+</return>
+<msg time="2025-10-08T23:45:42.435690" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.328941" elapsed="0.106777"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.436436" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.435868" elapsed="0.000657">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.436706" elapsed="0.000028"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.436777" elapsed="0.000017"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.328580" elapsed="0.108300">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${body}</var>
+<arg>status=cancelled</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.437695" elapsed="0.000065"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${rid}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.438482" elapsed="0.000048"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.439227" elapsed="0.000031"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.328081" elapsed="0.111531">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t15" name="CT15:Atualizar status - usuário comum (403)" line="105">
-<status status="FAIL" start="2025-10-08T23:29:52.679972" elapsed="0.000768">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.445436" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.445159" elapsed="0.000311"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.445532" elapsed="0.000035"/>
+</return>
+<msg time="2025-10-08T23:45:42.445705" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.444150" elapsed="0.001582"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.447384" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.447106" elapsed="0.000308"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.447470" elapsed="0.000030"/>
+</return>
+<msg time="2025-10-08T23:45:42.447646" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.446830" elapsed="0.000856"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.448422" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.448149" elapsed="0.000301"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.448501" elapsed="0.000040"/>
+</return>
+<msg time="2025-10-08T23:45:42.448650" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.447879" elapsed="0.000794"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.448945" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.448775" elapsed="0.000194"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.449014" elapsed="0.000025"/>
+</return>
+<msg time="2025-10-08T23:45:42.449146" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.446573" elapsed="0.002596"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.446292" elapsed="0.002905"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.446253" elapsed="0.002970"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.450212" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.449322" elapsed="0.000921"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.450303" elapsed="0.000028"/>
+</return>
+<msg time="2025-10-08T23:45:42.450448" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.445934" elapsed="0.004539"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.561699" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.562115" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.562448" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.450574" elapsed="0.111933"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.562625" elapsed="0.000064"/>
+</return>
+<msg time="2025-10-08T23:45:42.562929" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.442971" elapsed="0.120022"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.564189" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.563210" elapsed="0.001099">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.564595" elapsed="0.000071"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.564739" elapsed="0.000025"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.441183" elapsed="0.123727">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Update Reservation Status (admin)" owner="reservations">
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${rid}</arg>
+<arg>cancelled</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.565593" elapsed="0.000051"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>403</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.566508" elapsed="0.000097"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.440551" elapsed="0.127122">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t16" name="CT16:Atualizar status - não encontrado (404)" line="110">
-<status status="FAIL" start="2025-10-08T23:29:52.681519" elapsed="0.000579">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Update Reservation Status (admin)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.570597" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.570225" elapsed="0.000423"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.570770" elapsed="0.000039"/>
+</return>
+<msg time="2025-10-08T23:45:42.570944" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.569826" elapsed="0.001144"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.571317" level="INFO">${body} = {'status': 'confirmed'}</msg>
+<var>${body}</var>
+<arg>status=${status}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.571076" elapsed="0.000282"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.677697" level="INFO">PUT Request : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ path_url=/api/v1/reservations/000000000000000000000000 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', 'Content-Type': 'application/json', 'Content-Length': '23'} 
+ body=b'{"status": "confirmed"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.677776" level="INFO">PUT Response : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ status=404, reason=Not Found 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'ETag': 'W/"33-8vWO0lSSzyNkCoU9rwUX947GF3A"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Reservation not found"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.677920" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${reservation_id}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.571506" elapsed="0.106440"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.678015" elapsed="0.000036"/>
+</return>
+<msg time="2025-10-08T23:45:42.678190" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${NOT_FOUND_ID}</arg>
+<arg>confirmed</arg>
+<status status="PASS" start="2025-10-08T23:45:42.569293" elapsed="0.108920"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.679368" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.678550" elapsed="0.000931"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.568565" elapsed="0.111603"/>
 </test>
 <test id="s1-t17" name="CT17:Excluir reserva (admin) 200/204" line="114">
-<status status="FAIL" start="2025-10-08T23:29:52.683476" elapsed="0.001093">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.683292" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.683035" elapsed="0.000290"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.683387" elapsed="0.000034"/>
+</return>
+<msg time="2025-10-08T23:45:42.683541" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.682775" elapsed="0.000893"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.685181" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.684920" elapsed="0.000289"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.685261" elapsed="0.000029"/>
+</return>
+<msg time="2025-10-08T23:45:42.685399" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.684663" elapsed="0.000759"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.686235" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.685838" elapsed="0.000445"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.686345" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:42.686499" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.685564" elapsed="0.000959"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.686815" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.686649" elapsed="0.000192"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.686887" elapsed="0.000026"/>
+</return>
+<msg time="2025-10-08T23:45:42.687030" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.684430" elapsed="0.002623"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.684201" elapsed="0.002881"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.684180" elapsed="0.002928"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.687486" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.687205" elapsed="0.000308"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.687562" elapsed="0.000025"/>
+</return>
+<msg time="2025-10-08T23:45:42.687701" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.683866" elapsed="0.003859"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.798239" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.798317" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.798444" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.687825" elapsed="0.110661"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.798558" elapsed="0.000038"/>
+</return>
+<msg time="2025-10-08T23:45:42.798731" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.682399" elapsed="0.116357"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.799397" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.798878" elapsed="0.000599">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.799644" elapsed="0.000037"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.799723" elapsed="0.000016"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.681937" elapsed="0.117888">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Delete Reservation (admin)" owner="reservations">
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${rid}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.800191" elapsed="0.000031"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resp.status_code} in [200,204]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.800561" elapsed="0.000048"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.681142" elapsed="0.120320">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t18" name="CT18:Excluir - não autorizado (401)" line="119">
-<status status="FAIL" start="2025-10-08T23:29:52.685478" elapsed="0.001826">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.804825" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.804574" elapsed="0.000364"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.805013" elapsed="0.000035"/>
+</return>
+<msg time="2025-10-08T23:45:42.805174" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.804266" elapsed="0.000933"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.806959" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.806673" elapsed="0.000317"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.807048" elapsed="0.000033"/>
+</return>
+<msg time="2025-10-08T23:45:42.807209" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.806259" elapsed="0.000975"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.808748" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.807951" elapsed="0.000943"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.809154" elapsed="0.000153"/>
+</return>
+<msg time="2025-10-08T23:45:42.809899" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.807375" elapsed="0.002568"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.810418" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.810207" elapsed="0.000238"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.810495" elapsed="0.000031"/>
+</return>
+<msg time="2025-10-08T23:45:42.810640" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.805917" elapsed="0.004746"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.805693" elapsed="0.005001"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.805673" elapsed="0.005048"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.811138" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.810822" elapsed="0.000344"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.811218" elapsed="0.000027"/>
+</return>
+<msg time="2025-10-08T23:45:42.811361" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.805374" elapsed="0.006012"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:42.925360" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:42.925488" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:42 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:42.925725" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.811493" elapsed="0.114318"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:42.926342" elapsed="0.000069"/>
+</return>
+<msg time="2025-10-08T23:45:42.926676" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.803742" elapsed="0.122980"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.927797" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:42.926961" elapsed="0.000919">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:42.928082" elapsed="0.000042"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:42.928171" elapsed="0.000017"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.803383" elapsed="0.124893">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${rid}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.928802" elapsed="0.000049"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:42.929393" elapsed="0.000090"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.802678" elapsed="0.127820">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t19" name="CT19:Excluir - usuário comum (403)" line="124">
-<status status="FAIL" start="2025-10-08T23:29:52.689003" elapsed="0.000613">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Create Reservation And Return Id">
+<kw name="Create Reservation (user)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.934522" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.934108" elapsed="0.000463"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:42.934657" elapsed="0.000054"/>
+</return>
+<msg time="2025-10-08T23:45:42.934943" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.933547" elapsed="0.001452"/>
+</kw>
+<kw name="Reservation Payload" owner="payloads">
+<if>
+<branch type="IF" condition="$seats is None">
+<kw name="Reservation Seats (Default)" owner="payloads">
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.938139" level="INFO">${seat} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.937854" elapsed="0.000319"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.938235" elapsed="0.000034"/>
+</return>
+<msg time="2025-10-08T23:45:42.938446" level="INFO">${s1} = {'row': 'A', 'number': '10', 'type': 'full'}</msg>
+<var>${s1}</var>
+<arg>A</arg>
+<arg>10</arg>
+<arg>full</arg>
+<status status="PASS" start="2025-10-08T23:45:42.937530" elapsed="0.000946"/>
+</kw>
+<kw name="Make Seat" owner="payloads">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.939280" level="INFO">${seat} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${seat}</var>
+<arg>row=${row}</arg>
+<arg>number=${number}</arg>
+<arg>type=${type}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.938984" elapsed="0.000342"/>
+</kw>
+<return>
+<value>${seat}</value>
+<status status="PASS" start="2025-10-08T23:45:42.939457" elapsed="0.000061"/>
+</return>
+<msg time="2025-10-08T23:45:42.939745" level="INFO">${s2} = {'row': 'B', 'number': '12', 'type': 'half'}</msg>
+<var>${s2}</var>
+<arg>B</arg>
+<arg>12</arg>
+<arg>half</arg>
+<status status="PASS" start="2025-10-08T23:45:42.938652" elapsed="0.001127"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.940181" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<arg>${s1}</arg>
+<arg>${s2}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.939934" elapsed="0.000273"/>
+</kw>
+<return>
+<value>${seats}</value>
+<status status="PASS" start="2025-10-08T23:45:42.940258" elapsed="0.000032"/>
+</return>
+<msg time="2025-10-08T23:45:42.940406" level="INFO">${seats} = [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}]</msg>
+<var>${seats}</var>
+<status status="PASS" start="2025-10-08T23:45:42.936193" elapsed="0.004237"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:42.935911" elapsed="0.004550"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:45:42.935886" elapsed="0.004602"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:42.941288" level="INFO">${body} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${body}</var>
+<arg>session=${session_id}</arg>
+<arg>seats=${seats}</arg>
+<arg>paymentMethod=${payment_method}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.940593" elapsed="0.000781"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2025-10-08T23:45:42.941508" elapsed="0.000066"/>
+</return>
+<msg time="2025-10-08T23:45:42.941879" level="INFO">${payload} = {'session': '68e6a77ecf5ec47361dbb5ff', 'seats': [{'row': 'A', 'number': '10', 'type': 'full'}, {'row': 'B', 'number': '12', 'type': 'half'}], 'paymentMethod': 'credit_card'}</msg>
+<var>${payload}</var>
+<arg>${session_id}</arg>
+<arg>${seats}</arg>
+<arg>${payment_method}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.935376" elapsed="0.006577"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:43.079672" level="INFO">POST Request : url=http://localhost:3000/api/v1/reservations 
+ path_url=/api/v1/reservations 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhOSIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.QJs-wHllXx5aUhNQv9sS-fjjRr9hHoPOfN1Wxye2L0Y', 'Content-Type': 'application/json', 'Content-Length': '174'} 
+ body=b'{"session": "68e6a77ecf5ec47361dbb5ff", "seats": [{"row": "A", "number": "10", "type": "full"}, {"row": "B", "number": "12", "type": "half"}], "paymentMethod": "credit_card"}' 
+ </msg>
+<msg time="2025-10-08T23:45:43.079813" level="INFO">POST Response : url=http://localhost:3000/api/v1/reservations 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-I9xr25k7zQ3gQkl79H9zfZXMr+c"', 'Date': 'Thu, 09 Oct 2025 02:45:43 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"The following seats are not available: A10, B12"} 
+ </msg>
+<msg time="2025-10-08T23:45:43.080078" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:42.942471" elapsed="0.137660"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:43.080261" elapsed="0.000046"/>
+</return>
+<msg time="2025-10-08T23:45:43.080565" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>${user_token}</arg>
+<arg>${session_id}</arg>
+<status status="PASS" start="2025-10-08T23:45:42.932900" elapsed="0.147704"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-10-08T23:45:43.081310" level="FAIL">'400 in [200,201]' should be true.</msg>
+<arg>${resp.status_code} in [200,201]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2025-10-08T23:45:43.080766" elapsed="0.000642">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Extract Reservation Id" owner="reservations">
+<var>${rid}</var>
+<arg>${resp}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:43.081687" elapsed="0.000163"/>
+</kw>
+<return>
+<value>${rid}</value>
+<status status="NOT RUN" start="2025-10-08T23:45:43.081925" elapsed="0.000021"/>
+</return>
+<var>${rid}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:45:42.932340" elapsed="0.149715">'400 in [200,201]' should be true.</status>
+</kw>
+<kw name="Delete Reservation (admin)" owner="reservations">
+<var>${resp}</var>
+<arg>${USER_TOKEN}</arg>
+<arg>${rid}</arg>
+<status status="NOT RUN" start="2025-10-08T23:45:43.082528" elapsed="0.000042"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>403</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-10-08T23:45:43.083027" elapsed="0.000053"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:45:42.931554" elapsed="0.152113">'400 in [200,201]' should be true.</status>
 </test>
 <test id="s1-t20" name="CT20:Excluir - não encontrado (404)" line="129">
-<status status="FAIL" start="2025-10-08T23:29:52.690495" elapsed="0.000813">Parent suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<kw name="Delete Reservation (admin)" owner="reservations">
+<kw name="Header With Token" owner="env">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-08T23:45:43.086533" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-08T23:45:43.086168" elapsed="0.000412"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-10-08T23:45:43.086663" elapsed="0.000043"/>
+</return>
+<msg time="2025-10-08T23:45:43.086900" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', ...</msg>
+<var>${headers}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-10-08T23:45:43.085785" elapsed="0.001163"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:45:43.180322" level="INFO">DELETE Request : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ path_url=/api/v1/reservations/000000000000000000000000 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkYjM2MDgxNTJmMGNjNWQ3YjhhZiIsImlhdCI6MTc1OTk3Nzk0MCwiZXhwIjoxNzYwMDY0MzQwfQ.3kOt6YASS3fnuy1u4QkM4uX67Vw2lMr8fyQtEscSu00', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-10-08T23:45:43.180401" level="INFO">DELETE Response : url=http://localhost:3000/api/v1/reservations/000000000000000000000000 
+ status=404, reason=Not Found 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'ETag': 'W/"33-8vWO0lSSzyNkCoU9rwUX947GF3A"', 'Date': 'Thu, 09 Oct 2025 02:45:43 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":false,"message":"Reservation not found"} 
+ </msg>
+<msg time="2025-10-08T23:45:43.180530" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>cinema</arg>
+<arg>/reservations/${reservation_id}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:45:43.087336" elapsed="0.093222"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-10-08T23:45:43.180644" elapsed="0.000036"/>
+</return>
+<msg time="2025-10-08T23:45:43.180813" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${NOT_FOUND_ID}</arg>
+<status status="PASS" start="2025-10-08T23:45:43.085368" elapsed="0.095473"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-08T23:45:43.182036" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-08T23:45:43.181195" elapsed="0.001033"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:45:43.084826" elapsed="0.098206"/>
 </test>
-<status status="FAIL" start="2025-10-08T23:29:51.996531" elapsed="0.695981">Suite setup failed:
-Dictionary '${items}[0]' has no key ''_id''.</status>
+<status status="FAIL" start="2025-10-08T23:45:39.701774" elapsed="3.482045"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="20" skip="0">All Tests</stat>
+<stat pass="10" fail="10" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="20 Reservations" id="s1" pass="0" fail="20" skip="0">20 Reservations</stat>
+<stat name="20 Reservations" id="s1" pass="10" fail="10" skip="0">20 Reservations</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-10-08T23:29:52.648646" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
 </errors>
 </robot>
