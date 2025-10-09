@@ -40,7 +40,7 @@ Update Movie As Admin
 
 *** Test Cases ***
 
-# GET - Buscar todos os filmes
+# --------------- GET - Buscar todos os filmes ---------------
 CT01:Deve listar filmes (200)
     ${resp}=    Get Movies
     Should Be Equal As Integers    ${resp.status_code}    200
@@ -50,7 +50,7 @@ CT02:Deve aceitar filtros (title, genre, sort, limit, page) (200)
     ${resp}=    GET On Session    cinema    /movies    params=${params}    expected_status=any
     Should Be Equal As Integers    ${resp.status_code}    200
 
-# POST - Criar um novo filme
+# --------------- POST - Criar um novo filme ---------------
 CT03:Deve criar filme com admin (201/200)
     ${adm}=         Login As Admin
     Verify Token Works    ${adm}
@@ -82,7 +82,7 @@ CT06:Deve falhar com usuário comum (403)
     ${resp}=        POST On Session    cinema    /movies    headers=${headers}    json=${payload}    expected_status=any
     Should Be Equal As Integers    ${resp.status_code}    403
 
-# GET - Buscar filme por ID
+# --------------- GET - Buscar filme por ID ---------------
 CT08:Detalhes do filme (200)
     ${ID}=          Create Movie As Admin
     ${resp}=        Get Movie By Id    ${ID}
@@ -96,7 +96,7 @@ CT10:Filme não encontrado (404)
     ${resp}=        Get Movie By Id    ${NOT_FOUND_ID}
     Should Be Equal As Integers       ${resp.status_code}    404
 
-# PUT - Atualizar um filme
+# --------------- PUT - Atualizar um filme ---------------
 CT11:Atualizar com admin (200)
     ${ID}=          Create Movie As Admin
     ${resp}=        Update Movie As Admin    ${ID}
@@ -134,7 +134,7 @@ CT15:Filme não encontrado (404)
     ${resp}=        PUT On Session    cinema    /movies/${NOT_FOUND_ID}    headers=${headers}    json=${upd}    expected_status=any
     Should Be Equal As Integers       ${resp.status_code}    404
 
-# DELETE - Excluir um filme
+# --------------- DELETE - Excluir um filme ---------------
 CT16:Excluir com admin (200 ou 204)
     ${ID}=          Create Movie As Admin
     ${adm}=         Login As Admin
