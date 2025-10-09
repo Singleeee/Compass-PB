@@ -155,7 +155,7 @@ Create Reservation For Update (user)
     ${body}=       Set Variable    ${resp.json()}
     ${rid}=        Set Variable    ${body['data']['_id']}
     Set Suite Variable    ${LAST_RES_ID}    ${rid}
-    [Return]      ${rid}
+    RETURN      ${rid}
 
 Create Reservation For Details
     ${user_token}=    Login As User

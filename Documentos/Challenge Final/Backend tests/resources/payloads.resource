@@ -1,8 +1,31 @@
 *** Settings ***
 Library     Collections
 Library     BuiltIn
+Library     String
 
 *** Keywords ***
+
+Movie Payload (Docs)
+    ${rand}=            Generate Random String    8
+    ${title}=           Catenate    SEPARATOR=    Movie_    ${rand}
+    ${genres}=          Create List    Drama
+    ${duration}=        Evaluate    120
+    ${release}=         Evaluate    __import__('datetime').datetime.utcnow().date().isoformat()
+    ${body}=            Create Dictionary
+    ...                 title=${title}
+    ...                 synopsis=The journey of a lifetime.
+    ...                 director=Jane Doe
+    ...                 genres=${genres}
+    ...                 duration=${duration}
+    ...                 classification=PG-13
+    ...                 poster=poster.jpg
+    ...                 releaseDate=${release}
+    RETURN              ${body}
+
+Invalid Movie Payload (Docs)
+    ${body}=    Create Dictionary    title=${EMPTY}
+    RETURN      ${body}
+
 # ----------------------------------------
 # ASSENTOS (helpers)
 # ----------------------------------------
