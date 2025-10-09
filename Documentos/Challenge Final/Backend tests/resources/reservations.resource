@@ -48,7 +48,6 @@ Update Reservation Status (admin)
     [Arguments]    ${token}    ${reservation_id}    ${status}
     ${headers}=    Header (Token)    ${token}
     ${body}=       Create Dictionary    status=${status}
-    # <- API atualiza status em /reservations/{id}
     ${resp}=       PUT On Session    cinema    /reservations/${reservation_id}    headers=${headers}    json=${body}    expected_status=any
     RETURN         ${resp}
 

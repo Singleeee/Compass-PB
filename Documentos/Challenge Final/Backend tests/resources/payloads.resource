@@ -11,7 +11,6 @@ Make Seat
     ${seat}=    Create Dictionary    row=${row}    number=${number}    type=${type}
     RETURN      ${seat}
 
-# contador global para gerar assentos sempre diferentes
 Next Seat
     ${exists}=    Run Keyword And Return Status    Variable Should Exist    ${SEAT_COUNTER}
     Run Keyword If    not ${exists}    Set Suite Variable    ${SEAT_COUNTER}    0
