@@ -1,79 +1,49 @@
 *** Settings ***
-Library     String
 Library     Collections
+Library     BuiltIn
 
 *** Keywords ***
-# ============================================================
-# MOVIE (usado para criar sessão quando não existirem)
-# ============================================================
-Movie Payload (Docs)
-    ${title_rand}=       Generate Random String    8
-    ${title}=            Catenate    SEPARATOR=    Movie_    ${title_rand}
-    ${synopsis}=         Set Variable    The journey of a lifetime.
-    ${director}=         Set Variable    Jane Doe
-    ${genres}=           Create List    Drama
-    ${duration}=         Evaluate    120
-    ${classification}=   Set Variable    PG-13
-    ${poster}=           Set Variable    poster.jpg
-    ${release}=          Evaluate    __import__('datetime').datetime.utcnow().date().isoformat()
-    ${body}=             Create Dictionary
-    ...                  title=${title}
-    ...                  synopsis=${synopsis}
-    ...                  director=${director}
-    ...                  genres=${genres}
-    ...                  duration=${duration}
-    ...                  classification=${classification}
-    ...                  poster=${poster}
-    ...                  releaseDate=${release}
-    RETURN               ${body}
-
-# Se precisar de um payload inválido para testes negativos de movies
-Invalid Movie Payload (Docs)
-    ${body}=    Create Dictionary    title=${EMPTY}
-    RETURN      ${body}
-
-# ============================================================
-# THEATER (usado para criar sessão quando não existirem)
-# ============================================================
-Random Theater Payload
-    ${suf}=     Generate Random String    4    [LETTERS]
-    ${name}=    Catenate    SEPARATOR=    Sala-    ${suf}
-    ${seats}=   Evaluate    60
-    ${body}=    Create Dictionary    name=${name}    seats=${seats}
-    RETURN      ${body}
-
-# ============================================================
-# SESSION (usado para criar sessão quando não existirem)
-# ============================================================
-Random Session Payload
-    [Arguments]     ${movie_id}    ${theater_id}
-    # começa em ~10 min para evitar conflitos de validação de "passado"
-    ${start}=       Evaluate    (__import__('datetime').datetime.utcnow() + __import__('datetime').timedelta(minutes=10)).isoformat() + 'Z'
-    ${price}=       Evaluate    25.0
-    ${body}=        Create Dictionary
-    ...             movie=${movie_id}
-    ...             theater=${theater_id}
-    ...             startTime=${start}
-    ...             price=${price}
-    RETURN          ${body}
-
-# ============================================================
-# ASSENTOS (helpers para reservar)
-# ============================================================
+# ----------------------------------------
+# ASSENTOS (helpers)
+# ----------------------------------------
 Make Seat
     [Arguments]    ${row}    ${number}    ${type}=full
     ${seat}=    Create Dictionary    row=${row}    number=${number}    type=${type}
     RETURN      ${seat}
 
-Reservation Seats (Default)
-    ${s1}=    Make Seat    A    10    full
-    ${s2}=    Make Seat    B    12    half
-    ${seats}=    Create List    ${s1}    ${s2}
+# contador global para gerar assentos sempre diferentes
+Next Seat
+    ${exists}=    Run Keyword And Return Status    Variable Should Exist    ${SEAT_COUNTER}
+    Run Keyword If    not ${exists}    Set Suite Variable    ${SEAT_COUNTER}    0
+
+    ${rows}=    Create List    A    B    C    D    E
+    ${idx}=     Evaluate    ${SEAT_COUNTER} % 5
+    ${row}=     Get From List    ${rows}    ${idx}
+    ${number}=  Evaluate    1 + (${SEAT_COUNTER} % 30)
+
+    ${seat}=    Make Seat    ${row}    ${number}    full
+    ${new}=     Evaluate    ${SEAT_COUNTER} + 1
+    Set Suite Variable    ${SEAT_COUNTER}    ${new}
+    RETURN      ${seat}
+
+Append New Seat
+    [Arguments]    ${list}
+    ${seat}=    Next Seat
+    Append To List    ${list}    ${seat}
+
+Seats Unique
+    [Arguments]    ${qty}=2
+    ${seats}=    Create List
+    Repeat Keyword    ${qty}    Append New Seat    ${seats}
     RETURN      ${seats}
 
-# ============================================================
+Reservation Seats (Default)
+    ${seats}=    Seats Unique    2
+    RETURN       ${seats}
+
+# ----------------------------------------
 # PAYLOAD DA RESERVA
-# ============================================================
+# ----------------------------------------
 Reservation Payload
     [Arguments]    ${session_id}    ${seats}=${None}    ${payment_method}=credit_card
     IF    $seats is None
@@ -83,4 +53,5 @@ Reservation Payload
     ...         session=${session_id}
     ...         seats=${seats}
     ...         paymentMethod=${payment_method}
+    Set Suite Variable    ${LAST_SEATS}    ${seats}
     RETURN      ${body}

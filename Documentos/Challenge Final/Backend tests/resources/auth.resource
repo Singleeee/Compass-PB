@@ -31,6 +31,15 @@ Change Password
     ${resp}=       PUT On Session    cinema    /auth/profile    headers=${headers}    json=${body}    expected_status=any
     RETURN         ${resp}
 
+Get Token
+    [Arguments]    ${resp}
+    ${body}=        Set Variable     ${resp.json()}
+    Dictionary Should Contain Key    ${body}    data
+    ${data}=        Set Variable     ${body['data']}
+    Dictionary Should Contain Key    ${data}    token
+    ${token}=       Set Variable     ${data['token']}
+    RETURN         ${token}
+
 # --------- Helpers (token/id em 'data' ou na raiz) ----------
 _Extract From Body
     [Arguments]    ${body}    ${key}
