@@ -1,859 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-08T19:52:04.258462" rpa="false" schemaversion="5">
-<suite id="s1" name="00 Authentication" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Challenge Final\Backend tests\tests\00_authentication.robot">
-<kw name="Create API Session" owner="env" type="SETUP">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.480529" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>cinema</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T19:52:04.480207" elapsed="0.000568"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.479381" elapsed="0.001497"/>
-</kw>
-<test id="s1-t1" name="CT01:POST - Registrar Usuário - Registrar um novo usuário (201)" line="12">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.481814" level="INFO">${name} = Test User</msg>
-<var>${name}</var>
-<arg>Test User</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.481498" elapsed="0.000370"/>
-</kw>
-<kw name="Generate Random String" owner="String">
-<msg time="2025-10-08T19:52:04.482438" level="INFO">${rand} = yXFKJV</msg>
-<var>${rand}</var>
-<arg>6</arg>
-<arg>[LETTERS]</arg>
-<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.482180" elapsed="0.000286"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.482919" level="INFO">${email} = user_yXFKJV@example.com</msg>
-<var>${email}</var>
-<arg>user_${rand}@example.com</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.482726" elapsed="0.000220"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.483351" level="INFO">${password} = password123</msg>
-<var>${password}</var>
-<arg>password123</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.483215" elapsed="0.000162"/>
-</kw>
-<kw name="Register User" owner="auth">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-08T23:29:51.992847" rpa="false" schemaversion="5">
+<suite id="s1" name="20 Reservations" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Challenge Final\Backend tests\tests\20_reservations.robot">
+<kw name="Setup Reservations Suite" type="SETUP">
 <kw name="Create API Session" owner="env">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.484409" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-10-08T23:29:52.377793" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>cinema</arg>
 <arg>${BASE_URL}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T19:52:04.484216" elapsed="0.000366"/>
+<status status="PASS" start="2025-10-08T23:29:52.377196" elapsed="0.000972"/>
 </kw>
-<status status="PASS" start="2025-10-08T19:52:04.484018" elapsed="0.000637"/>
+<status status="PASS" start="2025-10-08T23:29:52.376515" elapsed="0.002060"/>
+</kw>
+<kw name="Ensure Test Session Id" owner="reservations">
+<if>
+<branch type="IF" condition="'${maybe_id}' != '' and '${maybe_id}' != '${EMPTY}'">
+<return>
+<value>${maybe_id}</value>
+<status status="NOT RUN" start="2025-10-08T23:29:52.380298" elapsed="0.000052"/>
+</return>
+<status status="NOT RUN" start="2025-10-08T23:29:52.379551" elapsed="0.000903"/>
+</branch>
+<status status="PASS" start="2025-10-08T23:29:52.379514" elapsed="0.001016"/>
+</if>
+<kw name="Create API Session" owner="env">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:29:52.381998" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>cinema</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-10-08T23:29:52.381339" elapsed="0.001122"/>
+</kw>
+<status status="PASS" start="2025-10-08T23:29:52.380873" elapsed="0.001814"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.485127" level="INFO">${body} = {'name': 'Test User', 'email': 'user_yXFKJV@example.com', 'password': 'password123'}</msg>
-<var>${body}</var>
-<arg>name=${name}</arg>
-<arg>email=${email}</arg>
-<arg>password=${password}</arg>
+<msg time="2025-10-08T23:29:52.383726" level="INFO">${params} = {'limit': '1'}</msg>
+<var>${params}</var>
+<arg>limit=1</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.484754" elapsed="0.000401"/>
+<status status="PASS" start="2025-10-08T23:29:52.382993" elapsed="0.000808"/>
 </kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.686282" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/register 
- path_url=/api/v1/auth/register 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '84', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "user_yXFKJV@example.com", "password": "password123"}' 
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-10-08T23:29:52.640923" level="INFO">GET Request : url=http://localhost:3000/api/v1/sessions?limit=1 
+ path_url=/api/v1/sessions?limit=1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
  </msg>
-<msg time="2025-10-08T19:52:04.686392" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/register 
- status=201, reason=Created 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '307', 'ETag': 'W/"133-8n91cxBKr2SHpVOnuWoYR8DG56U"', 'Date': 'Wed, 08 Oct 2025 22:52:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":true,"data":{"_id":"68e6eb14374a18b470539f22","name":"Test User","email":"user_yxfkjv@example.com","role":"user","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go"}} 
+<msg time="2025-10-08T23:29:52.641117" level="INFO">GET Response : url=http://localhost:3000/api/v1/sessions?limit=1 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '5887', 'ETag': 'W/"16ff-7seYrhgu8C4ZdKM6FkxvU1F+BtY"', 'Date': 'Thu, 09 Oct 2025 02:29:52 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"success":true,"count":1,"pagination":{"next":{"page":2,"limit":1}},"data":[{"_id":"68e6a77ecf5ec47361dbb5ff","movie":{"_id":"68e6a77ecf5ec47361dbb5f6","title":"Inception","duration":148,"poster":"inception.jpg","id":"68e6a77ecf5ec47361dbb5f6"},"theater":{"_id":"68e6a77ecf5ec47361dbb5fb","name":"Theater 1","type":"standard","id":"68e6a77ecf5ec47361dbb5fb"},"datetime":"2025-10-08T15:00:00.000Z","fullPrice":15,"halfPrice":7.5,"seats":[{"row":"A","number":1,"status":"available"},{"row":"A","number":2,"status":"available"},{"row":"A","number":3,"status":"available"},{"row":"A","number":4,"status":"available"},{"row":"A","number":5,"status":"available"},{"row":"A","number":6,"status":"available"},{"row":"A","number":7,"status":"available"},{"row":"A","number":8,"status":"available"},{"row":"A","number":9,"status":"available"},{"row":"A","number":10,"status":"available"},{"row":"A","number":11,"status":"available"},{"row":"A","number":12,"status":"available"},{"row":"A","number":13,"status":"available"},{"row":"A","number":14,"status":"available"},{"row":"A","number":15,"status":"available"},{"row":"B","number":1,"status":"available"},{"row":"B","number":2,"status":"available"},{"row":"B","number":3,"status":"available"},{"row":"B","number":4,"status":"available"},{"row":"B","number":5,"status":"available"},{"row":"B","number":6,"status":"available"},{"row":"B","number":7,"status":"available"},{"row":"B","number":8,"status":"available"},{"row":"B","number":9,"status":"available"},{"row":"B","number":10,"status":"available"},{"row":"B","number":11,"status":"available"},{"row":"B","number":12,"status":"available"},{"row":"B","number":13,"status":"available"},{"row":"B","number":14,"status":"available"},{"row":"B","number":15,"status":"available"},{"row":"C","number":1,"status":"available"},{"row":"C","number":2,"status":"available"},{"row":"C","number":3,"status":"available"},{"row":"C","number":4,"status":"available"},{"row":"C","number":5,"status":"available"},{"row":"C","number":6,"status":"available"},{"row":"C","number":7,"status":"available"},{"row":"C","number":8,"status":"available"},{"row":"C","number":9,"status":"available"},{"row":"C","number":10,"status":"available"},{"row":"C","number":11,"status":"available"},{"row":"C","number":12,"status":"available"},{"row":"C","number":13,"status":"available"},{"row":"C","number":14,"status":"available"},{"row":"C","number":15,"status":"available"},{"row":"D","number":1,"status":"available"},{"row":"D","number":2,"status":"available"},{"row":"D","number":3,"status":"available"},{"row":"D","number":4,"status":"available"},{"row":"D","number":5,"status":"available"},{"row":"D","number":6,"status":"available"},{"row":"D","number":7,"status":"available"},{"row":"D","number":8,"status":"available"},{"row":"D","number":9,"status":"available"},{"row":"D","number":10,"status":"available"},{"row":"D","number":11,"status":"available"},{"row":"D","number":12,"status":"available"},{"row":"D","number":13,"status":"available"},{"row":"D","number":14,"status":"available"},{"row":"D","number":15,"status":"available"},{"row":"E","number":1,"status":"available"},{"row":"E","number":2,"status":"available"},{"row":"E","number":3,"status":"available"},{"row":"E","number":4,"status":"available"},{"row":"E","number":5,"status":"available"},{"row":"E","number":6,"status":"available"},{"row":"E","number":7,"status":"available"},{"row":"E","number":8,"status":"available"},{"row":"E","number":9,"status":"available"},{"row":"E","number":10,"status":"available"},{"row":"E","number":11,"status":"available"},{"row":"E","number":12,"status":"available"},{"row":"E","number":13,"status":"available"},{"row":"E","number":14,"status":"available"},{"row":"E","number":15,"status":"available"},{"row":"F","number":1,"status":"available"},{"row":"F","number":2,"status":"available"},{"row":"F","number":3,"status":"available"},{"row":"F","number":4,"status":"available"},{"row":"F","number":5,"status":"available"},{"row":"F","number":6,"status":"available"},{"row":"F","number":7,"status":"available"},{"row":"F","number":8,"status":"available"},{"row":"F","number":9,"status":"available"},{"row":"F","number":10,"status":"available"},{"row":"F","number":11,"status":"available"},{"row":"F","number":12,"status":"available"},{"row":"F","number":13,"status":"available"},{"row":"F","number":14,"status":"available"},{"row":"F","number":15,"status":"available"},{"row":"G","number":1,"status":"available"},{"row":"G","number":2,"status":"available"},{"row":"G","number":3,"status":"available"},{"row":"G","number":4,"status":"available"},{"row":"G","number":5,"status":"available"},{"row":"G","number":6,"status":"available"},{"row":"G","number":7,"status":"available"},{"row":"G","number":8,"status":"available"},{"row":"G","number":9,"status":"available"},{"row":"G","number":10,"status":"available"},{"row":"G","number":11,"status":"available"},{"row":"G","number":12,"status":"available"},{"row":"G","number":13,"status":"available"},{"row":"G","number":14,"status":"available"},{"row":"G","number":15,"status":"available"},{"row":"H","number":1,"status":"available"},{"row":"H","number":2,"status":"available"},{"row":"H","number":3,"status":"available"},{"row":"H","number":4,"status":"available"},{"row":"H","number":5,"status":"available"},{"row":"H","number":6,"status":"available"},{"row":"H","number":7,"status":"available"},{"row":"H","number":8,"status":"available"},{"row":"H","number":9,"status":"available"},{"row":"H","number":10,"status":"available"},{"row":"H","number":11,"status":"available"},{"row":"H","number":12,"status":"available"},{"row":"H","number":13,"status":"available"},{"row":"H","number":14,"status":"available"},{"row":"H","number":15,"status":"available"}],"createdAt":"2025-10-08T18:03:42.547Z","__v":0,"updatedAt":"2025-10-08T18:03:43.259Z","id":"68e6a77ecf5ec47361dbb5ff"}]} 
  </msg>
-<msg time="2025-10-08T19:52:04.686513" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<msg time="2025-10-08T23:29:52.641580" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
 <var>${resp}</var>
 <arg>cinema</arg>
-<arg>/auth/register</arg>
-<arg>json=${body}</arg>
+<arg>/sessions</arg>
+<arg>params=${params}</arg>
 <arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.485271" elapsed="0.201268"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:04.686613" elapsed="0.000053"/>
-</return>
-<msg time="2025-10-08T19:52:04.686807" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>${name}</arg>
-<arg>${email}</arg>
-<arg>${password}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.483659" elapsed="0.203173"/>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-10-08T23:29:52.384408" elapsed="0.257214"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.687784" level="INFO">Argument types are:
+<msg time="2025-10-08T23:29:52.642421" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${resp.status_code}</arg>
-<arg>201</arg>
+<arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.687166" elapsed="0.000729"/>
+<status status="PASS" start="2025-10-08T23:29:52.641828" elapsed="0.000690"/>
 </kw>
-<kw name="Get Token" owner="auth">
-<kw name="Extract Token" owner="auth">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.690556" level="INFO">${body} = {'success': True, 'data': {'_id': '68e6eb14374a18b470539f22', 'name': 'Test User', 'email': 'user_yxfkjv@example.com', 'role': 'user', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYj...</msg>
-<var>${body}</var>
+<msg time="2025-10-08T23:29:52.643551" level="INFO">${data} = {'success': True, 'count': 1, 'pagination': {'next': {'page': 2, 'limit': 1}}, 'data': [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration...</msg>
+<var>${data}</var>
 <arg>${resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.690033" elapsed="0.000556"/>
+<status status="PASS" start="2025-10-08T23:29:52.642672" elapsed="0.000922"/>
 </kw>
 <kw name="Set Variable If" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.691541" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>'data' in ${body} and 'token' in ${body['data']}</arg>
-<arg>${body['data']['token']}</arg>
-<arg>${EMPTY}</arg>
+<msg time="2025-10-08T23:29:52.647352" level="INFO">${items} = [{'_id': '68e6a77ecf5ec47361dbb5ff', 'movie': {'_id': '68e6a77ecf5ec47361dbb5f6', 'title': 'Inception', 'duration': 148, 'poster': 'inception.jpg', 'id': '68e6a77ecf5ec47361dbb5f6'}, 'theater': {'_id'...</msg>
+<var>${items}</var>
+<arg>'data' in ${data}</arg>
+<arg>${data['data']}</arg>
+<arg>${data}</arg>
 <doc>Sets variable based on the given condition.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.690718" elapsed="0.000853"/>
-</kw>
-<kw name="Set Variable If" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.691892" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>'${token}'==''</arg>
-<arg>${body['token']}</arg>
-<arg>${token}</arg>
-<doc>Sets variable based on the given condition.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.691690" elapsed="0.000230"/>
+<status status="PASS" start="2025-10-08T23:29:52.643753" elapsed="0.003666"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.692191" level="INFO">Length is 171.</msg>
-<arg>${token}</arg>
-<arg>msg=Resposta não contém token válido.</arg>
+<msg time="2025-10-08T23:29:52.648328" level="INFO">Length is 1.</msg>
+<arg>${items}</arg>
+<arg>msg=Endpoint /sessions não retornou itens.</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.692028" elapsed="0.000206"/>
+<status status="PASS" start="2025-10-08T23:29:52.647594" elapsed="0.000820"/>
 </kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2025-10-08T19:52:04.692286" elapsed="0.000039"/>
-</return>
-<msg time="2025-10-08T19:52:04.692600" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>${resp}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.689599" elapsed="0.003030"/>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-10-08T23:29:52.648646" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>'_id' in ${items}[0]</arg>
+<arg>Fail</arg>
+<arg>msg=O item retornado não contém a chave '_id'.</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="PASS" start="2025-10-08T23:29:52.648606" elapsed="0.004534"/>
 </kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2025-10-08T19:52:04.692674" elapsed="0.000028"/>
-</return>
-<msg time="2025-10-08T19:52:04.692813" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>${resp}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.688901" elapsed="0.003937"/>
-</kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.693920" level="INFO">${REG_EMAIL} = user_yXFKJV@example.com</msg>
-<arg>${REG_EMAIL}</arg>
-<arg>${email}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.693143" elapsed="0.000823"/>
-</kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.695588" level="INFO">${REG_PASSWORD} = password123</msg>
-<arg>${REG_PASSWORD}</arg>
-<arg>${password}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.694320" elapsed="0.001381"/>
-</kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.697019" level="INFO">${REG_TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<arg>${REG_TOKEN}</arg>
-<arg>${token}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.696264" elapsed="0.000806"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.480952" elapsed="0.216392"/>
-</test>
-<test id="s1-t2" name="CT02:POST - Registrar Usuário - Usuário já existente (400)" line="26">
-<kw name="Register User" owner="auth">
-<kw name="Create API Session" owner="env">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.699567" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>cinema</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T19:52:04.699365" elapsed="0.000359"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.698775" elapsed="0.001021"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.700184" level="INFO">${body} = {'name': 'Test Again', 'email': 'user_yXFKJV@example.com', 'password': 'password123'}</msg>
-<var>${body}</var>
-<arg>name=${name}</arg>
-<arg>email=${email}</arg>
-<arg>password=${password}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.699894" elapsed="0.000322"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.758478" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/register 
- path_url=/api/v1/auth/register 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '85', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test Again", "email": "user_yXFKJV@example.com", "password": "password123"}' 
- </msg>
-<msg time="2025-10-08T19:52:04.758554" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/register 
- status=400, reason=Bad Request 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '49', 'ETag': 'W/"31-WKEMg8zALB1Ko0WjUHi/6RBGHVc"', 'Date': 'Wed, 08 Oct 2025 22:52:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"User already exists"} 
- </msg>
-<msg time="2025-10-08T19:52:04.758682" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/register</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.700324" elapsed="0.058385"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:04.758781" elapsed="0.000037"/>
-</return>
-<msg time="2025-10-08T19:52:04.758948" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>Test Again</arg>
-<arg>${REG_EMAIL}</arg>
-<arg>${REG_PASSWORD}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.698451" elapsed="0.060523"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.760133" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>400</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.759311" elapsed="0.000957"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.697940" elapsed="0.062813"/>
-</test>
-<test id="s1-t3" name="CT03:POST - Realizar login de um usuário - Autenticar com sucesso (200)" line="30">
-<kw name="Login With" owner="auth">
-<kw name="Create API Session" owner="env">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.762655" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>cinema</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T19:52:04.762465" elapsed="0.000345"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.762260" elapsed="0.000619"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.763215" level="INFO">${body} = {'email': 'user_yXFKJV@example.com', 'password': 'password123'}</msg>
-<var>${body}</var>
-<arg>email=${email}</arg>
-<arg>password=${password}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.762975" elapsed="0.000266"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.897842" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/login 
- path_url=/api/v1/auth/login 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '63', 'Content-Type': 'application/json'} 
- body=b'{"email": "user_yXFKJV@example.com", "password": "password123"}' 
- </msg>
-<msg time="2025-10-08T19:52:04.897955" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/login 
- status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '307', 'ETag': 'W/"133-8n91cxBKr2SHpVOnuWoYR8DG56U"', 'Date': 'Wed, 08 Oct 2025 22:52:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":true,"data":{"_id":"68e6eb14374a18b470539f22","name":"Test User","email":"user_yxfkjv@example.com","role":"user","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go"}} 
- </msg>
-<msg time="2025-10-08T19:52:04.898214" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/login</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.763339" elapsed="0.134905"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:04.898315" elapsed="0.000039"/>
-</return>
-<msg time="2025-10-08T19:52:04.898497" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>${REG_EMAIL}</arg>
-<arg>${REG_PASSWORD}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.761946" elapsed="0.136578"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.899693" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.898841" elapsed="0.001028"/>
-</kw>
-<kw name="Get Token" owner="auth">
-<kw name="Extract Token" owner="auth">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.901754" level="INFO">${body} = {'success': True, 'data': {'_id': '68e6eb14374a18b470539f22', 'name': 'Test User', 'email': 'user_yxfkjv@example.com', 'role': 'user', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYj...</msg>
-<var>${body}</var>
-<arg>${resp.json()}</arg>
+<msg time="2025-10-08T23:29:52.653587" level="FAIL">Dictionary '${items}[0]' has no key ''_id''.</msg>
+<var>${sid}</var>
+<arg>${items}[0]['_id']</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.901252" elapsed="0.000534"/>
-</kw>
-<kw name="Set Variable If" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.902733" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>'data' in ${body} and 'token' in ${body['data']}</arg>
-<arg>${body['data']['token']}</arg>
-<arg>${EMPTY}</arg>
-<doc>Sets variable based on the given condition.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.901905" elapsed="0.000858"/>
-</kw>
-<kw name="Set Variable If" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.903068" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>'${token}'==''</arg>
-<arg>${body['token']}</arg>
-<arg>${token}</arg>
-<doc>Sets variable based on the given condition.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.902877" elapsed="0.000217"/>
+<status status="FAIL" start="2025-10-08T23:29:52.653352" elapsed="0.000320">Dictionary '${items}[0]' has no key ''_id''.</status>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.903343" level="INFO">Length is 171.</msg>
-<arg>${token}</arg>
-<arg>msg=Resposta não contém token válido.</arg>
+<arg>${sid}</arg>
+<arg>msg=Não foi possível extrair _id da sessão.</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.903191" elapsed="0.000194"/>
+<status status="NOT RUN" start="2025-10-08T23:29:52.653870" elapsed="0.000031"/>
 </kw>
 <return>
-<value>${token}</value>
-<status status="PASS" start="2025-10-08T19:52:04.903434" elapsed="0.000029"/>
+<value>${sid}</value>
+<status status="NOT RUN" start="2025-10-08T23:29:52.654017" elapsed="0.000029"/>
 </return>
-<msg time="2025-10-08T19:52:04.903578" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>${resp}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.901015" elapsed="0.002587"/>
-</kw>
-<return>
-<value>${token}</value>
-<status status="PASS" start="2025-10-08T19:52:04.903652" elapsed="0.000024"/>
-</return>
-<msg time="2025-10-08T19:52:04.903785" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<var>${token}</var>
-<arg>${resp}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.900677" elapsed="0.003133"/>
+<var>${sid}</var>
+<arg>${TEST_SESSION_ID}</arg>
+<status status="FAIL" start="2025-10-08T23:29:52.379144" elapsed="0.275049">Dictionary '${items}[0]' has no key ''_id''.</status>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.904741" level="INFO">${LOGIN_TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go</msg>
-<arg>${LOGIN_TOKEN}</arg>
-<arg>${token}</arg>
+<arg>${TEST_SESSION_ID}</arg>
+<arg>${sid}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.904100" elapsed="0.000687"/>
+<status status="NOT RUN" start="2025-10-08T23:29:52.654346" elapsed="0.000028"/>
 </kw>
-<status status="PASS" start="2025-10-08T19:52:04.761415" elapsed="0.143621"/>
+<kw name="Login As Admin" owner="auth">
+<var>${adm}</var>
+<status status="NOT RUN" start="2025-10-08T23:29:52.654641" elapsed="0.000035"/>
+</kw>
+<kw name="Login As User" owner="auth">
+<var>${usr}</var>
+<status status="NOT RUN" start="2025-10-08T23:29:52.654850" elapsed="0.000028"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${adm}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-10-08T23:29:52.654995" elapsed="0.000024"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${USER_TOKEN}</arg>
+<arg>${usr}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-10-08T23:29:52.655135" elapsed="0.000023"/>
+</kw>
+<status status="FAIL" start="2025-10-08T23:29:52.375184" elapsed="0.280135">Dictionary '${items}[0]' has no key ''_id''.</status>
+</kw>
+<test id="s1-t1" name="CT01:Minhas reservas (200)" line="38">
+<status status="FAIL" start="2025-10-08T23:29:52.655463" elapsed="0.000878">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t4" name="CT04:POST - Realizar login de um usuário - Credenciais inválidas (401)" line="36">
-<kw name="Login With" owner="auth">
-<kw name="Create API Session" owner="env">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.908286" level="INFO">Creating Session using : alias=cinema, url=http://localhost:3000/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>cinema</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-10-08T19:52:04.907749" elapsed="0.000731"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.907462" elapsed="0.001095"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.908928" level="INFO">${body} = {'email': 'wrong@example.com', 'password': 'badpass'}</msg>
-<var>${body}</var>
-<arg>email=${email}</arg>
-<arg>password=${password}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.908672" elapsed="0.000281"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:04.962233" level="INFO">POST Request : url=http://localhost:3000/api/v1/auth/login 
- path_url=/api/v1/auth/login 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '53', 'Content-Type': 'application/json'} 
- body=b'{"email": "wrong@example.com", "password": "badpass"}' 
- </msg>
-<msg time="2025-10-08T19:52:04.962308" level="INFO">POST Response : url=http://localhost:3000/api/v1/auth/login 
- status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '55', 'ETag': 'W/"37-5uDpJTljPBecOPs/j7OXFdPRcmQ"', 'Date': 'Wed, 08 Oct 2025 22:52:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"Invalid email or password"} 
- </msg>
-<msg time="2025-10-08T19:52:04.962439" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/login</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.909057" elapsed="0.053407"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:04.962535" elapsed="0.000050"/>
-</return>
-<msg time="2025-10-08T19:52:04.962720" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>wrong@example.com</arg>
-<arg>badpass</arg>
-<status status="PASS" start="2025-10-08T19:52:04.907054" elapsed="0.055691"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.963806" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>401</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.963084" elapsed="0.000880"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.906014" elapsed="0.058756"/>
+<test id="s1-t2" name="CT02:Minhas reservas - sem token (401)" line="42">
+<status status="FAIL" start="2025-10-08T23:29:52.657257" elapsed="0.000798">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t5" name="CT05:GET - Buscar perfil de usuário atual - Dados do Usuário (200)" line="40">
-<kw name="Get Me" owner="auth">
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Header With Token" owner="env">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:04.968356" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>Authorization=Bearer ${token}</arg>
-<arg>Content-Type=application/json</arg>
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.967987" elapsed="0.000419"/>
-</kw>
-<return>
-<value>${headers}</value>
-<status status="PASS" start="2025-10-08T19:52:04.968507" elapsed="0.000054"/>
-</return>
-<arg>${token}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.967563" elapsed="0.001151"/>
-</kw>
-<msg time="2025-10-08T19:52:04.968843" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>'${token}'!=''</arg>
-<arg>Header With Token</arg>
-<arg>${token}</arg>
-<arg>ELSE</arg>
-<arg>Create Dictionary</arg>
-<arg>Accept=application/json</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.967156" elapsed="0.001724"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.077527" level="INFO">GET Request : url=http://localhost:3000/api/v1/auth/me 
- path_url=/api/v1/auth/me 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2025-10-08T19:52:05.077643" level="INFO">GET Response : url=http://localhost:3000/api/v1/auth/me 
- status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '125', 'ETag': 'W/"7d-SbhB9yTwZMV8+YujdHhh2hGNbdI"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":true,"data":{"_id":"68e6eb14374a18b470539f22","name":"Test User","email":"user_yxfkjv@example.com","role":"user"}} 
- </msg>
-<msg time="2025-10-08T19:52:05.077768" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/me</arg>
-<arg>headers=${headers}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:04.969065" elapsed="0.108730"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:05.077864" elapsed="0.000036"/>
-</return>
-<msg time="2025-10-08T19:52:05.078032" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>${LOGIN_TOKEN}</arg>
-<status status="PASS" start="2025-10-08T19:52:04.966609" elapsed="0.111447"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.078914" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.078370" elapsed="0.000618"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.080152" level="INFO">${body} = {'success': True, 'data': {'_id': '68e6eb14374a18b470539f22', 'name': 'Test User', 'email': 'user_yxfkjv@example.com', 'role': 'user'}}</msg>
-<var>${body}</var>
-<arg>${resp.json()}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.079394" elapsed="0.000796"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${body}</arg>
-<arg>data</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.080468" elapsed="0.000163"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:04.965596" elapsed="0.115284"/>
+<test id="s1-t3" name="CT03:Criar reserva com sucesso (201)" line="46">
+<status status="FAIL" start="2025-10-08T23:29:52.658939" elapsed="0.000674">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t6" name="CT06:GET - Buscar perfil de usuário atual - Sem token (401)" line="46">
-<kw name="Get Me" owner="auth">
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Create Dictionary" owner="BuiltIn">
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.082674" elapsed="0.000126"/>
-</kw>
-<msg time="2025-10-08T19:52:05.082890" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
-<var>${headers}</var>
-<arg>'${token}'!=''</arg>
-<arg>Header With Token</arg>
-<arg>${token}</arg>
-<arg>ELSE</arg>
-<arg>Create Dictionary</arg>
-<arg>Accept=application/json</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.082447" elapsed="0.000468"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.084935" level="INFO">GET Request : url=http://localhost:3000/api/v1/auth/me 
- path_url=/api/v1/auth/me 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg time="2025-10-08T19:52:05.085007" level="INFO">GET Response : url=http://localhost:3000/api/v1/auth/me 
- status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65', 'ETag': 'W/"41-TJq3LYiwj1On+7IZ17oLU5tM1Zs"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"Not authorized to access this route"} 
- </msg>
-<msg time="2025-10-08T19:52:05.085130" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/me</arg>
-<arg>headers=${headers}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.083019" elapsed="0.002137"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:05.085229" elapsed="0.000036"/>
-</return>
-<msg time="2025-10-08T19:52:05.085398" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<status status="PASS" start="2025-10-08T19:52:05.081887" elapsed="0.003535"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.086170" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>401</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.085724" elapsed="0.000502"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:05.081410" elapsed="0.005074"/>
+<test id="s1-t4" name="CT04:Criar reserva - assentos já ocupados ou inválidos (400)" line="51">
+<status status="FAIL" start="2025-10-08T23:29:52.660456" elapsed="0.000873">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t7" name="CT07:GET - Buscar perfil de usuário atual - Token inválido (401)" line="50">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.087734" level="INFO">${headers} = {'Authorization': 'Bearer invalid.token.value', 'Accept': 'application/json'}</msg>
-<var>${headers}</var>
-<arg>Authorization=${INVALID_BEARER}</arg>
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.087495" elapsed="0.000267"/>
-</kw>
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.091769" level="INFO">GET Request : url=http://localhost:3000/api/v1/auth/me 
- path_url=/api/v1/auth/me 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer invalid.token.value'} 
- body=None 
- </msg>
-<msg time="2025-10-08T19:52:05.091886" level="INFO">GET Response : url=http://localhost:3000/api/v1/auth/me 
- status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65', 'ETag': 'W/"41-TJq3LYiwj1On+7IZ17oLU5tM1Zs"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"Not authorized to access this route"} 
- </msg>
-<msg time="2025-10-08T19:52:05.092038" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/me</arg>
-<arg>headers=${headers}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.088012" elapsed="0.004055"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.093050" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>401</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.092426" elapsed="0.000725"/>
-</kw>
-<status status="PASS" start="2025-10-08T19:52:05.087048" elapsed="0.006428"/>
+<test id="s1-t5" name="CT05:Criar reserva - não autorizado (401)" line="59">
+<status status="FAIL" start="2025-10-08T23:29:52.662213" elapsed="0.000787">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t8" name="CT08:PUT - Trocar senha - (BUG) com dados corretos retorna 500" line="57">
-<kw name="Catenate" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.094843" level="INFO">${nova} = password123_N1</msg>
-<var>${nova}</var>
-<arg>SEPARATOR=</arg>
-<arg>${REG_PASSWORD}</arg>
-<arg>_N1</arg>
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.094634" elapsed="0.000238"/>
-</kw>
-<kw name="Change Password" owner="auth">
-<kw name="Header With Token" owner="env">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.096114" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>Authorization=Bearer ${token}</arg>
-<arg>Content-Type=application/json</arg>
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.095889" elapsed="0.000258"/>
-</kw>
-<return>
-<value>${headers}</value>
-<status status="PASS" start="2025-10-08T19:52:05.096203" elapsed="0.000033"/>
-</return>
-<msg time="2025-10-08T19:52:05.096354" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>${token}</arg>
-<status status="PASS" start="2025-10-08T19:52:05.095650" elapsed="0.000729"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.096695" level="INFO">${body} = {'currentPassword': 'password123', 'newPassword': 'password123_N1'}</msg>
-<var>${body}</var>
-<arg>currentPassword=${current_password}</arg>
-<arg>newPassword=${new_password}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.096473" elapsed="0.000247"/>
-</kw>
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.207620" level="INFO">PUT Request : url=http://localhost:3000/api/v1/auth/profile 
- path_url=/api/v1/auth/profile 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', 'Content-Type': 'application/json', 'Content-Length': '67'} 
- body=b'{"currentPassword": "password123", "newPassword": "password123_N1"}' 
- </msg>
-<msg time="2025-10-08T19:52:05.207748" level="INFO">PUT Response : url=http://localhost:3000/api/v1/auth/profile 
- status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '933', 'ETag': 'W/"3a5-gLHEzo0P503R/g986qx7r69MJvk"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"Illegal arguments: string, undefined","stack":"Error: Illegal arguments: string, undefined\n    at _async (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:305:15)\n    at C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:335:11\n    at new Promise (&lt;anonymous&gt;)\n    at Object.compare (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:334:16)\n    at userSchema.methods.matchPassword (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\src\\models\\User.js:92:23)\n    at exports.updateProfile (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\src\\controllers\\authController.js:141:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"} 
- </msg>
-<msg time="2025-10-08T19:52:05.208066" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/profile</arg>
-<arg>headers=${headers}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.096830" elapsed="0.111288"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:05.208261" elapsed="0.000056"/>
-</return>
-<msg time="2025-10-08T19:52:05.208572" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
-<var>${resp}</var>
-<arg>${LOGIN_TOKEN}</arg>
-<arg>${REG_PASSWORD}</arg>
-<arg>${nova}</arg>
-<status status="PASS" start="2025-10-08T19:52:05.095224" elapsed="0.113400"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n[CT08] Body: ${resp.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.209126" elapsed="0.001648"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.212217" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>500</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.211113" elapsed="0.001179"/>
-</kw>
-<tag>bug</tag>
-<tag>profile</tag>
-<status status="PASS" start="2025-10-08T19:52:05.094051" elapsed="0.118563"/>
+<test id="s1-t6" name="CT06:Criar reserva - sessão não encontrada (404)" line="64">
+<status status="FAIL" start="2025-10-08T23:29:52.663884" elapsed="0.000793">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t9" name="CT09:PUT - Trocar senha - (BUG) currentPassword incorreta retorna 500 (era 401)" line="64">
-<kw name="Change Password" owner="auth">
-<kw name="Header With Token" owner="env">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.215740" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>Authorization=Bearer ${token}</arg>
-<arg>Content-Type=application/json</arg>
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.215434" elapsed="0.000343"/>
-</kw>
-<return>
-<value>${headers}</value>
-<status status="PASS" start="2025-10-08T19:52:05.215943" elapsed="0.000043"/>
-</return>
-<msg time="2025-10-08T19:52:05.216125" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>${token}</arg>
-<status status="PASS" start="2025-10-08T19:52:05.215078" elapsed="0.001095"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.216621" level="INFO">${body} = {'currentPassword': 'wrong_password', 'newPassword': 'any_new_pass_123'}</msg>
-<var>${body}</var>
-<arg>currentPassword=${current_password}</arg>
-<arg>newPassword=${new_password}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.216367" elapsed="0.000280"/>
-</kw>
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.323130" level="INFO">PUT Request : url=http://localhost:3000/api/v1/auth/profile 
- path_url=/api/v1/auth/profile 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', 'Content-Type': 'application/json', 'Content-Length': '72'} 
- body=b'{"currentPassword": "wrong_password", "newPassword": "any_new_pass_123"}' 
- </msg>
-<msg time="2025-10-08T19:52:05.323398" level="INFO">PUT Response : url=http://localhost:3000/api/v1/auth/profile 
- status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '933', 'ETag': 'W/"3a5-gLHEzo0P503R/g986qx7r69MJvk"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":false,"message":"Illegal arguments: string, undefined","stack":"Error: Illegal arguments: string, undefined\n    at _async (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:305:15)\n    at C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:335:11\n    at new Promise (&lt;anonymous&gt;)\n    at Object.compare (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\node_modules\\bcryptjs\\umd\\index.js:334:16)\n    at userSchema.methods.matchPassword (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\src\\models\\User.js:92:23)\n    at exports.updateProfile (C:\\Users\\Guilherme\\Documents\\Challenge Final\\cinema-challenge-back\\src\\controllers\\authController.js:141:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"} 
- </msg>
-<msg time="2025-10-08T19:52:05.323940" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/profile</arg>
-<arg>headers=${headers}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.216744" elapsed="0.107259"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2025-10-08T19:52:05.324173" elapsed="0.000067"/>
-</return>
-<msg time="2025-10-08T19:52:05.324515" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
-<var>${resp}</var>
-<arg>${LOGIN_TOKEN}</arg>
-<arg>wrong_password</arg>
-<arg>any_new_pass_123</arg>
-<status status="PASS" start="2025-10-08T19:52:05.213974" elapsed="0.110589"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n[CT09] Body: ${resp.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.324989" elapsed="0.001536"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.327529" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>500</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.326837" elapsed="0.000776"/>
-</kw>
-<tag>bug</tag>
-<tag>profile</tag>
-<status status="PASS" start="2025-10-08T19:52:05.213301" elapsed="0.114627"/>
+<test id="s1-t7" name="CT07:Listar todas as reservas (admin) 200" line="68">
+<status status="FAIL" start="2025-10-08T23:29:52.665709" elapsed="0.000726">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<test id="s1-t10" name="CT10:PUT - Trocar senha - (BUG) payload incompleto retorna 200 (era 400)" line="70">
-<kw name="Header With Token" owner="env">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.330019" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>Authorization=Bearer ${token}</arg>
-<arg>Content-Type=application/json</arg>
-<arg>Accept=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.329744" elapsed="0.000309"/>
-</kw>
-<return>
-<value>${headers}</value>
-<status status="PASS" start="2025-10-08T19:52:05.330115" elapsed="0.000035"/>
-</return>
-<msg time="2025-10-08T19:52:05.330272" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', ...</msg>
-<var>${headers}</var>
-<arg>${LOGIN_TOKEN}</arg>
-<status status="PASS" start="2025-10-08T19:52:05.329419" elapsed="0.000879"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.331072" level="INFO">${body} = {'currentPassword': ''}</msg>
-<var>${body}</var>
-<arg>currentPassword=${EMPTY}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.330565" elapsed="0.000537"/>
-</kw>
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-10-08T19:52:05.488160" level="INFO">PUT Request : url=http://localhost:3000/api/v1/auth/profile 
- path_url=/api/v1/auth/profile 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNCwiZXhwIjoxNzYwMDUwMzI0fQ.M8n8VQF3D7JzuLlMKuWjXGS8f9gmMq8Vz6bFRNzx4Go', 'Content-Type': 'application/json', 'Content-Length': '23'} 
- body=b'{"currentPassword": ""}' 
- </msg>
-<msg time="2025-10-08T19:52:05.488238" level="INFO">PUT Response : url=http://localhost:3000/api/v1/auth/profile 
- status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '349', 'ETag': 'W/"15d-2uIWVl+GeLGVuUms5Od0kxI5I+o"', 'Date': 'Wed, 08 Oct 2025 22:52:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"success":true,"message":"Perfil atualizado com sucesso","data":{"_id":"68e6eb14374a18b470539f22","name":"Test User","email":"user_yxfkjv@example.com","role":"user","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZlYjE0Mzc0YTE4YjQ3MDUzOWYyMiIsImlhdCI6MTc1OTk2MzkyNSwiZXhwIjoxNzYwMDUwMzI1fQ.eVMBX42hIi9oWQBhK1m_BvI4DXN14bFOZo7N2IBh8Yo"}} 
- </msg>
-<msg time="2025-10-08T19:52:05.488356" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>cinema</arg>
-<arg>/auth/profile</arg>
-<arg>headers=${headers}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.331389" elapsed="0.156994"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n[CT10] Body: ${resp.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.489172" elapsed="0.001799"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-08T19:52:05.491906" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-08T19:52:05.491291" elapsed="0.000680"/>
-</kw>
-<tag>bug</tag>
-<tag>profile</tag>
-<status status="PASS" start="2025-10-08T19:52:05.328678" elapsed="0.163862"/>
+<test id="s1-t8" name="CT08:Listar todas - sem token (401)" line="72">
+<status status="FAIL" start="2025-10-08T23:29:52.667416" elapsed="0.001123">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </test>
-<status status="PASS" start="2025-10-08T19:52:04.260953" elapsed="1.232457"/>
+<test id="s1-t9" name="CT09:Listar todas - usuário comum (403)" line="76">
+<status status="FAIL" start="2025-10-08T23:29:52.669481" elapsed="0.001684">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t10" name="CT10:Detalhes da reserva (200)" line="80">
+<status status="FAIL" start="2025-10-08T23:29:52.672260" elapsed="0.000534">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t11" name="CT11:Detalhes - não autorizado (401)" line="85">
+<status status="FAIL" start="2025-10-08T23:29:52.673663" elapsed="0.000738">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t12" name="CT12:Detalhes - não encontrado (404)" line="90">
+<status status="FAIL" start="2025-10-08T23:29:52.675224" elapsed="0.000782">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t13" name="CT13:Atualizar status (admin) 200" line="94">
+<status status="FAIL" start="2025-10-08T23:29:52.676851" elapsed="0.000713">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t14" name="CT14:Atualizar status - não autorizado (401)" line="99">
+<status status="FAIL" start="2025-10-08T23:29:52.678338" elapsed="0.000636">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t15" name="CT15:Atualizar status - usuário comum (403)" line="105">
+<status status="FAIL" start="2025-10-08T23:29:52.679972" elapsed="0.000768">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t16" name="CT16:Atualizar status - não encontrado (404)" line="110">
+<status status="FAIL" start="2025-10-08T23:29:52.681519" elapsed="0.000579">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t17" name="CT17:Excluir reserva (admin) 200/204" line="114">
+<status status="FAIL" start="2025-10-08T23:29:52.683476" elapsed="0.001093">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t18" name="CT18:Excluir - não autorizado (401)" line="119">
+<status status="FAIL" start="2025-10-08T23:29:52.685478" elapsed="0.001826">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t19" name="CT19:Excluir - usuário comum (403)" line="124">
+<status status="FAIL" start="2025-10-08T23:29:52.689003" elapsed="0.000613">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<test id="s1-t20" name="CT20:Excluir - não encontrado (404)" line="129">
+<status status="FAIL" start="2025-10-08T23:29:52.690495" elapsed="0.000813">Parent suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
+</test>
+<status status="FAIL" start="2025-10-08T23:29:51.996531" elapsed="0.695981">Suite setup failed:
+Dictionary '${items}[0]' has no key ''_id''.</status>
 </suite>
 <statistics>
 <total>
-<stat pass="10" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="20" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="3" fail="0" skip="0">bug</stat>
-<stat pass="3" fail="0" skip="0">profile</stat>
 </tag>
 <suite>
-<stat name="00 Authentication" id="s1" pass="10" fail="0" skip="0">00 Authentication</stat>
+<stat name="20 Reservations" id="s1" pass="0" fail="20" skip="0">20 Reservations</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-10-08T23:29:52.648646" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
 </errors>
 </robot>
