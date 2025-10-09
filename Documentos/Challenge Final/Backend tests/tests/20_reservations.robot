@@ -75,7 +75,6 @@ CT09:Listar todas - usuário comum (403)
 # --------------- GET - Buscar uma reserva por ID ---------------
 CT10:Detalhes da reserva (200)
     ${user_token}=    Login As User
-    # garante que temos uma reserva válida (se CT03 falhou por qualquer motivo)
     Run Keyword If    '${LAST_RES_ID}' == ''    Create Reservation For Details
     ${resp}=          Reservation Details    ${user_token}    ${LAST_RES_ID}
     Should Be Equal As Integers    ${resp.status_code}    200
@@ -97,23 +96,19 @@ CT13:Atualizar status (admin) 200
     Should Be Equal As Integers    ${resp.status_code}    200
 
 CT14:Atualizar status - não autorizado (401)
-    # garante um ID (reaproveita ${LAST_RES_ID} se já existir)
     ${rid}=    Set Variable If    '${LAST_RES_ID}'!=''    ${LAST_RES_ID}    ${EMPTY}
     Run Keyword If    '${rid}'==''
-    ...    ${rid}=    Create Reservation For Update (user)
+    ...        ${rid}=    Create Reservation For Update (user)
 
-    # sem header Authorization
     ${body}=   Create Dictionary    status=confirmed
-    ${resp}=   PUT On Session    cinema    /reservations/${rid}    json=${body}    expected_status=any
-    Should Be Equal As Integers    ${resp.status_code}    401
+    ${resp}=   PUT On Session       cinema    /reservations/${rid}    json=${body}    expected_status=any
+    Should Be Equal As Integers     ${resp.status_code}               401
 
 CT15:Atualizar status - usuário comum (403)
-    # garante um ID (reaproveita ${LAST_RES_ID} se já existir)
     ${rid}=    Set Variable If    '${LAST_RES_ID}'!=''    ${LAST_RES_ID}    ${EMPTY}
     Run Keyword If    '${rid}'==''
     ...    ${rid}=    Create Reservation For Update (user)
 
-    # token de USER, não admin
     ${user}=   Login As User
     ${headers}=    Header With Token    ${user}
     ${body}=   Create Dictionary    status=confirmed
@@ -134,7 +129,6 @@ CT17:Excluir reserva (admin) 200/204
     Set Suite Variable    ${LAST_RES_ID}    ${EMPTY}
 
 CT18:Excluir - não autorizado (401)
-    # tenta excluir a própria CT03 se ainda existir; senão usa um id inválido só para checar 401
     ${target}=        Run Keyword If    '${LAST_RES_ID}' != ''    Set Variable    ${LAST_RES_ID}    ELSE    Set Variable    ${TEST_SESSION_ID}
     ${resp}=          DELETE On Session    cinema    /reservations/${target}    expected_status=any
     Should Be Equal As Integers    ${resp.status_code}    401
@@ -153,16 +147,13 @@ CT20:Excluir - não encontrado (404)
 
 *** Keywords ***
 Create Reservation For Update (user)
-    # cria uma reserva mínima via usuário para obter um ID válido
     ${user}=       Login As User
     ${headers}=    Header With Token    ${user}
-    # se você já tem ${TEST_SESSION_ID}, use-o; senão troque pelo seu ID válido de sessão
     ${payload}=    Reservation Payload    ${TEST_SESSION_ID}
     ${resp}=       POST On Session    cinema    /reservations    headers=${headers}    json=${payload}    expected_status=any
     Should Be True    ${resp.status_code} in [200,201]
     ${body}=       Set Variable    ${resp.json()}
     ${rid}=        Set Variable    ${body['data']['_id']}
-    # opcional: guarda pra outros testes
     Set Suite Variable    ${LAST_RES_ID}    ${rid}
     [Return]      ${rid}
 
