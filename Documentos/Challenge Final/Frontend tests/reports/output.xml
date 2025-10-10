@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-10T10:16:39.747968" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Challenge Final\Frontend tests\tests">
+<suite id="s1-s1" name="Online" source="C:\Users\Guilherme\Documents\Compass-PB\Documentos\Challenge Final\Frontend tests\tests\online.robot">
+<test id="s1-s1-t1" name="Webapp deve estar online" line="7">
+<kw name="Start Session" owner="base">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-10-10T10:16:40.621918" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Guilherme\\Documents\\Compass-PB\\Documentos\\Challenge Final\\Frontend tests\\reports\\browser\\traces\\temp\\344316ce-ccd7-46c5-9bf1-b63b30e63c54"}</msg>
+<msg time="2025-10-10T10:16:40.681131" level="INFO">Starting Browser process C:\Users\Guilherme\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:62484</msg>
+<msg time="2025-10-10T10:16:44.502809" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Guilherme\\Documents\\Compass-PB\\Documentos\\Challenge Final\\Frontend tests\\reports\\browser\\traces\\temp\\344316ce-ccd7-46c5-9bf1-b63b30e63c54"}</msg>
+<arg>browser=chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-10-10T10:16:40.620876" elapsed="3.883017"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-10-10T10:16:48.292870" level="INFO">Successfully initialized new page object and opened url: http://localhost:3002</msg>
+<msg time="2025-10-10T10:16:48.293092" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-10-10T10:16:44.504427" elapsed="3.789087"/>
+</kw>
+<status status="PASS" start="2025-10-10T10:16:40.619447" elapsed="7.674442"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-10-10T10:16:48.596113" level="INFO">Title: 'Cinema App'</msg>
+<arg>equal</arg>
+<arg>Cinema App</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-10-10T10:16:48.314965" elapsed="0.281368"/>
+</kw>
+<msg time="2025-10-10T10:16:48.694684" level="INFO">Switching context to context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898 in CURRENT</msg>
+<msg time="2025-10-10T10:16:48.717326" level="INFO">Successfully changed active context: context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898</msg>
+<msg time="2025-10-10T10:16:48.864544" level="INFO">Successfully closed Context</msg>
+<status status="PASS" start="2025-10-10T10:16:40.618029" elapsed="8.006831"/>
+</test>
+<doc>Online</doc>
+<status status="PASS" start="2025-10-10T10:16:39.826539" elapsed="9.049698"/>
+</suite>
+<status status="PASS" start="2025-10-10T10:16:39.752213" elapsed="9.151673"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="Online" id="s1-s1" pass="1" fail="0" skip="0">Tests.Online</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

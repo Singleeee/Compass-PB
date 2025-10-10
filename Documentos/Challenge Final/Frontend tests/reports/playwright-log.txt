@@ -1,0 +1,32 @@
+{"level":30,"time":"2025-10-10T13:16:42.528Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Listening on 127.0.0.1:62484"}
+(node:1728) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2025-10-10T13:16:42.945Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2025-10-10T13:16:44.498Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Adding browser to stack: chromium, version: 140.0.7339.16"}
+{"level":30,"time":"2025-10-10T13:16:44.499Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method newBrowser"}
+{"level":30,"time":"2025-10-10T13:16:44.499Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2025-10-10T13:16:44.511Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-10-10T13:16:44.511Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@6f0839248a8d968391923d01082385f9\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=27af7b42-94db-4d0e-8904-e88fd2515f48\"}"}
+{"level":30,"time":"2025-10-10T13:16:44.611Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Setting default timeout for context context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898 to 10000"}
+{"level":30,"time":"2025-10-10T13:16:44.611Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Changed active context: context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898"}
+{"level":30,"time":"2025-10-10T13:16:45.290Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Video path: undefined"}
+{"level":30,"time":"2025-10-10T13:16:45.291Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Changed active page"}
+{"level":30,"time":"2025-10-10T13:16:48.288Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method newPage"}
+{"level":30,"time":"2025-10-10T13:16:48.637Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.655Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.674Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.680Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.686Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.689Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.697Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.701Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.708Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Changed active context: context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898"}
+{"level":30,"time":"2025-10-10T13:16:48.708Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Changing current active page: page=dc3c50ae-d998-47b6-acac-8817ea341785"}
+{"level":30,"time":"2025-10-10T13:16:48.708Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Changed active page"}
+{"level":30,"time":"2025-10-10T13:16:48.718Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-10-10T13:16:48.761Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Removed page=dd5da70a-50a9-4488-864f-f42e8dafabc2 from context=65ff8f4d-8ff0-4bcb-b8d8-b5440004d898 page stack"}
+{"level":30,"time":"2025-10-10T13:16:48.861Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-10-10T13:16:48.887Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:48.888Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-10-10T13:16:49.092Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2025-10-10T13:16:51.241Z","pid":1728,"hostname":"DESKTOP-INOVI70","msg":"End of node method closeAllBrowsers"}
