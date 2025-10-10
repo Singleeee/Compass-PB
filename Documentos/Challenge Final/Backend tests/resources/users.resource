@@ -21,7 +21,7 @@ _Extract Id From Response
     Should Not Be Empty    ${id}
     RETURN      ${id}
 
-# ---------- Endpoints (admin-only na doc) ----------
+# ---------- Endpoints (admin) ----------
 List Users (admin)
     [Arguments]    ${token}    ${page}=1    ${limit}=10
     ${headers}=    Header (Token)    ${token}
@@ -47,11 +47,11 @@ Delete User (admin)
     ${resp}=       DELETE On Session    cinema    /users/${user_id}    headers=${headers}    expected_status=any
     RETURN         ${resp}
 
-# ---------- Helpers de teste ----------
+# ---------- Helpers ----------
 Valid User Update Payload
     [Arguments]    ${name}=${None}    ${email}=${None}    ${role}=user
     IF    $name is None
-        ${name}=    Catenate    SEPARATOR=    Test User    
+        ${name}=    Set Variable    Test User
     END
     IF    $email is None
         ${suffix}=    Generate Random String    6    [LOWER]
@@ -61,7 +61,7 @@ Valid User Update Payload
     RETURN  ${p}
 
 Invalid User Update Payload
-    ${bad}=    Create Dictionary    email=${EMPTY}
+    ${bad}=    Create Dictionary    email="example_invalid"
     RETURN     ${bad}
 
 _Create Random User (public register)
@@ -71,9 +71,20 @@ _Create Random User (public register)
     ${pass}=     Set Variable    password123
     ${r}=        Register User    ${name}    ${email}    ${pass}
     Should Be True    ${r.status_code} in [200,201]
-    # retorna id via /auth/me
     ${login}=    Login With    ${email}    ${pass}
     ${tk}=       Extract Token    ${login}
     ${me}=       Get Me         ${tk}
     ${uid}=      _Extract Id From Response    ${me}
     RETURN       ${uid}
+
+# --- ALIAS para bater com tua suite (evita “Undefined keyword”) ---
+_Create Random User
+    ${uid}=    _Create Random User (public register)
+    RETURN     ${uid}
+
+Invalid Update Payload
+    ${bad}=    Create Dictionary
+    ...    name=${EMPTY}
+    ...    email=nota-valid-email       # sem @
+    ...    role=superuser               # fora do conjunto permitido (user/admin)
+    RETURN    ${bad}
