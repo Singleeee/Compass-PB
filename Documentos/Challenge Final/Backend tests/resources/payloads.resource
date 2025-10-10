@@ -77,3 +77,23 @@ Reservation Payload
     ...         paymentMethod=${payment_method}
     Set Suite Variable    ${LAST_SEATS}    ${seats}
     RETURN      ${body}
+
+Random Theater Payload
+    # Gera uma sala válida: name único e número de assentos.
+    ${suf}=    Generate Random String    4    [LETTERS]
+    ${name}=   Catenate    SEPARATOR=-    Sala    ${suf}
+    ${seats}=  Set Variable    60
+    ${body}=   Create Dictionary    name=${name}    seats=${seats}
+    RETURN     ${body}
+
+Random Session Payload
+    [Arguments]    ${movie_id}    ${theater_id}    ${start_offset_min}=10    ${full_price}=30.0    ${half_price}=15.0
+    # startTime em ~agora + offset (UTC) no formato ISO-8601 esperado pela API
+    ${start}=    Evaluate    (__import__('datetime').datetime.utcnow() + __import__('datetime').timedelta(minutes=${start_offset_min})).isoformat() + 'Z'
+    ${body}=     Create Dictionary
+    ...          movie=${movie_id}
+    ...          theater=${theater_id}
+    ...          startTime=${start}
+    ...          fullPrice=${full_price}
+    ...          halfPrice=${half_price}
+    RETURN       ${body}
